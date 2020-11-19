@@ -5,6 +5,7 @@ const bodyparser = require('body-parser');
 const path = require('path'); //to resolve paths
 const connectDB = require('./server/database/connection'); //to connect to the mongodb cloud
 const app = express();
+var favicon = require('serve-favicon');
 
 dotenv.config({path: 'config.env'}); //path to config file
 
@@ -21,6 +22,7 @@ app.use(bodyparser.urlencoded({extended:true}));
 //set view engine
 app.set('view engine', 'ejs');
 
+app.use(favicon(__dirname + '/favicon.ico'));
 //load assets
 app.use('/css', express.static(path.resolve(__dirname, "assets/css")));
 app.use('/img', express.static(path.resolve(__dirname, "assets/img")));

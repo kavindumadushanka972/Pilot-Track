@@ -5,13 +5,14 @@ var scheme = new mongoose.Schema({
         type: String,
         required: true
     },
-    email: {
+    emp_num: {
         type: String,
         required: true,
         unique: true
     },
-    gender: String,
-    status: String
+    mob_num: String,
+    address: String,
+    distance: String
 });
 
 const Userdb = mongoose.model('userdb', scheme);

@@ -11,9 +11,10 @@ exports.create = (req,res) =>{
     //new user
     const user = new Userdb({
         name: req.body.name,
-        email: req.body.email,
-        gender: req.body.gender,
-        status: req.body.status
+        emp_num: req.body.emp_num,
+        mob_num: req.body.mob_num,
+        address: req.body.address,
+        distance: req.body.distance
     });
 
     // save user in the database
@@ -65,6 +66,8 @@ exports.update = (req, res) =>{
     }
 
     const id = req.params.id; //getting url parameter
+    //To update the distance
+    req.body.distance = parseInt(req.body.distance) + 2;
     Userdb.findByIdAndUpdate(id, req.body, {useFindAndModify: false})
         .then(data =>{
             if(!data){
