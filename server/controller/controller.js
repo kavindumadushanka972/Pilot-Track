@@ -66,8 +66,9 @@ exports.update = (req, res) =>{
     }
 
     const id = req.params.id; //getting url parameter
-    //To update the distance
+    //To update the distance ***********************************
     req.body.distance = parseInt(req.body.distance) + 2;
+    //********************************************************** */
     Userdb.findByIdAndUpdate(id, req.body, {useFindAndModify: false})
         .then(data =>{
             if(!data){
