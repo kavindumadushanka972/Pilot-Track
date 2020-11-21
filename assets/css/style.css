@@ -19,8 +19,9 @@ a{
 }
 
 .container{
-    max-width: 1024px;
-    margin: auto;  
+    /* max-width: 1024px; */
+    margin-left: 10px;
+    margin-right: 10px;  
 }
 
 .nav-brand{
@@ -44,6 +45,22 @@ a{
 .border-shadow{
     border: 1px solid var(--border-btn);
     box-shadow : 1px 3px 10px #8c7dd1;
+}
+
+.border-shadow-reset{
+    border: 1px solid var(--border-btn);
+    box-shadow : 1px 3px 10px #c0201a;
+}
+
+.sort{
+    margin-left: 10px;
+}
+.border-shadow-reset{
+    margin-left: 10px;
+}
+
+.update{
+    color: darkred;
 }
 
 .text-dark{

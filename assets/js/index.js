@@ -23,6 +23,7 @@ $('#update_user').submit(function(event){
     }
     $.ajax(request).done(function(response){
         alert("Data updated successfully");
+        location.reload();
     })
 
 }) 
@@ -46,3 +47,18 @@ if(window.location.pathname == '/'){
         }
     })
 }
+
+// $('#resetbtn').click(function(){
+    
+//         var request = {
+//             "url":'/',
+//             //"url": window.location.protocol + window.location.host + `/api/users/${data.id}`,
+//             "method": "GET"
+//         }
+    
+//         $.ajax(request).done(function(response){
+//             alert("Data Reset successfull");
+//             location.reload();
+//         })
+    
+// })

@@ -14,7 +14,9 @@ exports.create = (req,res) =>{
         emp_num: req.body.emp_num,
         mob_num: req.body.mob_num,
         address: req.body.address,
-        distance: req.body.distance
+        distance: req.body.distance,
+        turns: req.body.turns,
+        accidents:req.body.accidents
     });
 
     // save user in the database
@@ -64,22 +66,24 @@ exports.update = (req, res) =>{
             .status(400)
             .send({message: "Data to update can not be empty"})
     }
-
-    const id = req.params.id; //getting url parameter
-    //To update the distance ***********************************
-    req.body.distance = parseInt(req.body.distance) + 2;
-    //********************************************************** */
-    Userdb.findByIdAndUpdate(id, req.body, {useFindAndModify: false})
-        .then(data =>{
-            if(!data){
-                res.status(404).send({message: `Cannot update user with $(id). Maybe user not found`})
-            }else{
-                res.send(data)
-            }
-        })
-        .catch(err =>{
-            res.status(500).send({message: `Error update user information`})
-        })
+    
+        const id = req.params.id; //getting url parameter
+        //To update the distance ***********************************
+        req.body.distance = parseFloat(req.body.distance) + parseFloat(req.body.distance_update);
+        req.body.turns = parseInt(req.body.turns) + parseInt(req.body.turns_update);
+        req.body.accidents = parseInt(req.body.accidents) + parseInt(req.body.accidents_update);
+        //********************************************************** */
+        Userdb.findByIdAndUpdate(id, req.body, {useFindAndModify: false})
+            .then(data =>{
+                if(!data){
+                    res.status(404).send({message: `Cannot update user with $(id). Maybe user not found`})
+                }else{
+                    res.send(data);
+                }
+            })
+            .catch(err =>{
+                res.status(500).send({message: `Error update user information`})
+            })
 
 }
 
@@ -102,3 +106,16 @@ exports.delete = (req, res) =>{
             });
         });
 }
+
+// exports.resetform = (req, res) =>{
+//         alert('hi')
+//         Userdb.updateMany(
+//             {},
+//             {
+//                 $set:{
+//                     'distance': '0'
+//                 }
+//             }
+//         )
+            
+// }

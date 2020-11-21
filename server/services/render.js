@@ -51,3 +51,49 @@ exports.update_user = (req,res) =>{
     })
 }
 
+exports.sort_turns = (req,res) =>{
+    Userdb.find().sort({"turns": -1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+        if (err) throw err;
+        console.log(docs);
+        res.render("index",{users:docs});
+      });
+}
+
+exports.sort_accidents = (req,res) =>{
+    Userdb.find().sort({"accidents": 1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+        if (err) throw err;
+        console.log(docs);
+        res.render("index",{users:docs});
+      });
+}
+
+exports.form_reset = (req,res) =>{
+     
+        Userdb.updateMany(
+            {},
+            {
+                $set:{
+                    'distance': '0',
+                    'turns':'0',
+                    'accidents':'0'
+                }
+            }
+        ).exec(function(err,docs){
+            if (err) throw err;
+            console.log(docs);
+            //res.render("index",{users:docs});
+        });
+
+        Userdb.find().sort({"distance": -1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+            if (err) throw err;
+            console.log(docs);
+            res.render("index",{users:docs});
+          });
+
+         
+    // Userdb.find().sort({"accidents": 1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+    //     if (err) throw err;
+    //     console.log(docs);
+    //     res.render("index",{users:docs});
+    //   });
+}
