@@ -121,12 +121,8 @@ exports.form_reset = (req,res) =>{
         ).exec(function(err,docs){
             if (err) throw err;
             console.log(docs);
+            res.send({
+                message: "Successfully Reset"
+            })
         });
-
-        Userdb.find().sort({"distance": -1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
-            if (err) throw err;
-            console.log(docs);
-            res.render("index",{users:docs});
-          });
-
 }

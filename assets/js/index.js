@@ -17,7 +17,6 @@ $('#update_user').submit(function(event){
 
     var request = {
         "url":`/api/users/${data.id}`,
-        //"url": window.location.protocol + window.location.host + `/api/users/${data.id}`,
         "method": "PUT",
         "data": data
     }
@@ -35,7 +34,6 @@ if(window.location.pathname == '/'){
 
         var request = {
             "url":`/api/users/${id}`,
-            //"url": window.location.protocol + window.location.host + `/api/users/${data.id}`,
             "method": "DELETE"
         }
 
@@ -53,7 +51,6 @@ $('#resetbtn').click(function(event){
 
         var request = {
             "url":`/api/users/reset`,
-            //"url": window.location.protocol + window.location.host + `/api/users/${data.id}`,
             "method": "GET"
         }
         if(confirm("Are you sure?")){
