@@ -23,7 +23,7 @@ route.get('/update-user', services.update_user);
 
 route.get('/sort-turns', services.sort_turns);
 route.get('/sort-accidents', services.sort_accidents);
-route.get('/form-reset', services.form_reset);
+//route.get('/form-reset', services.form_reset);
 
 // API
 route.post('/api/users', controller.create); //POST is used to send data to a server to create/update a resource.

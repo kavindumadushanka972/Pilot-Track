@@ -121,8 +121,9 @@ exports.form_reset = (req,res) =>{
         ).exec(function(err,docs){
             if (err) throw err;
             console.log(docs);
-            res.send({
-                message: "Successfully Reset"
-            })
+            res.render("index",{users:docs});
+            // res.send({
+            //     message: "Successfully Reset"
+            // })
         });
 }

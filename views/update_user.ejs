@@ -15,7 +15,7 @@
             <span class="text-light">Use the below form to update an account</span>
         </div>
         <!-- form handeling -->
-        <form method="POST" id="update_user">
+        <form onsubmit="return validate()" method="POST" id="update_user">
             <div class="new_user">
                 <div class="form-group">
                     <label for="name" class="text-light">Name</label>
@@ -42,26 +42,26 @@
                     <label for="current-distance" class="text-light">Current Distance in km</label>
                     <input type="text" name="distance" readonly value=<%= users.distance %>>
                     <label for="current-distance" class="update">Enter the Distance to be added in km</label>
-                    <input type="text" name="distance_update" value="0">
+                    <input type="text" name="distance_update" value="0" id="dis_update">
                 </div>
                 
                 <div class="form-group">
                     <label for="turns" class="text-light">Current Number of Turns</label>
                     <input type="text" name="turns" readonly value=<%= users.turns %>>
                     <label for="turns" class="update">Enter the number of turns to be added</label>
-                    <input type="text" name="turns_update" value="0">
+                    <input type="text" name="turns_update" value="0" id="turns_update">
                 </div>
 
                 <div class="form-group">
                     <label for="accidents" class="text-light">Current Number of Accidents</label>
                     <input type="text" name="accidents" readonly value=<%= users.accidents %>>
                     <label for="accidents" class="update">Enter the number of Accidents to be added</label>
-                    <input type="text" name="accidents_update" value="0">
+                    <input type="text" name="accidents_update" value="0" id="acc_update">
                 </div>
 
                
                 <div class="form-group">
-                    <button type="submit" class="btn text-dark update">Save</button>
+                    <button type="submit" class="btn text-dark update" id="savebutton">Save</button>
                 </div>
             </div>
         </form>

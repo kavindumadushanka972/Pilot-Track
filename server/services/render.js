@@ -67,12 +67,12 @@ exports.sort_accidents = (req,res) =>{
       });
 }
 
-exports.form_reset = (req,res) =>{
+// exports.form_reset = (req,res) =>{
      
-        Userdb.find().exec(function(err,docs){
-            if (err) throw err;
-            console.log(docs);
-            res.render("index",{users:docs});
-        });
+//         Userdb.find().exec(function(err,docs){
+//             if (err) throw err;
+//             console.log(docs);
+//             res.render("index",{users:docs});
+//         });
 
-}
+// }
