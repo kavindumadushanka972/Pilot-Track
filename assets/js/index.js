@@ -48,17 +48,18 @@ if(window.location.pathname == '/'){
     })
 }
 
-// $('#resetbtn').click(function(){
-    
-//         var request = {
-//             "url":'/',
-//             //"url": window.location.protocol + window.location.host + `/api/users/${data.id}`,
-//             "method": "GET"
-//         }
-    
-//         $.ajax(request).done(function(response){
-//             alert("Data Reset successfull");
-//             location.reload();
-//         })
-    
-// })
+$('#resetbtn').click(function(event){
+        event.preventDefault(); //change the default behaviour
+
+        var request = {
+            "url":`/api/users/reset`,
+            //"url": window.location.protocol + window.location.host + `/api/users/${data.id}`,
+            "method": "GET"
+        }
+        if(confirm("Are you sure?")){
+            $.ajax(request).done(function(response){
+                alert("Data Reset successfull");
+                location.reload();
+            })
+        }
+})

@@ -107,15 +107,26 @@ exports.delete = (req, res) =>{
         });
 }
 
-// exports.resetform = (req, res) =>{
-//         alert('hi')
-//         Userdb.updateMany(
-//             {},
-//             {
-//                 $set:{
-//                     'distance': '0'
-//                 }
-//             }
-//         )
-            
-// }
+exports.form_reset = (req,res) =>{
+     
+        Userdb.updateMany(
+            {},
+            {
+                $set:{
+                    'distance': '0',
+                    'turns':'0',
+                    'accidents':'0'
+                }
+            }
+        ).exec(function(err,docs){
+            if (err) throw err;
+            console.log(docs);
+        });
+
+        Userdb.find().sort({"distance": -1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+            if (err) throw err;
+            console.log(docs);
+            res.render("index",{users:docs});
+          });
+
+}
