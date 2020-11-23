@@ -12,11 +12,12 @@ exports.homeRoutes = (req, res) => {
     //     .catch(err =>{
     //         res.send(err);
     //     })
+    
 
-    //sorting according to the distance and rendering the page
-    Userdb.find().sort({"distance": -1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+    //sorting 
+    Userdb.find({}).sort({"turns":-1,"distance": -1, "att":-1, "accidents":1, "running_repair":1, "customer_complains":1, "disciplinary_actions":1, "fuel":-1, "avgspeed_show":-1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
         if (err) throw err;
-        console.log(docs);
+        //console.log(docs);
         res.render("index",{users:docs});
       });
     //sorting according to the distance and rendering the page(This method is working too)
@@ -67,6 +68,56 @@ exports.sort_accidents = (req,res) =>{
       });
 }
 
+exports.sort_attendance = (req,res) =>{
+    Userdb.find().sort({"att": -1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+        if (err) throw err;
+        console.log(docs);
+        res.render("index",{users:docs});
+      });
+}
+
+exports.sort_repairs = (req,res) =>{
+    Userdb.find().sort({"running_repair": 1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+        if (err) throw err;
+        console.log(docs);
+        res.render("index",{users:docs});
+      });
+}
+exports.sort_complains = (req,res) =>{
+    Userdb.find().sort({"customer_complains": 1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+        if (err) throw err;
+        console.log(docs);
+        res.render("index",{users:docs});
+      });
+}
+exports.sort_complains = (req,res) =>{
+    Userdb.find().sort({"customer_complains": 1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+        if (err) throw err;
+        console.log(docs);
+        res.render("index",{users:docs});
+      });
+}
+exports.sort_dis_action = (req,res) =>{
+    Userdb.find().sort({"disciplinary_actions": 1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+        if (err) throw err;
+        console.log(docs);
+        res.render("index",{users:docs});
+      });
+}
+exports.sort_fuel = (req,res) =>{
+    Userdb.find().sort({"fuel": -1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+        if (err) throw err;
+        console.log(docs);
+        res.render("index",{users:docs});
+      });
+}
+exports.sort_avgspeed = (req,res) =>{
+    Userdb.find().sort({"avgspeed_show": -1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+        if (err) throw err;
+        console.log(docs);
+        res.render("index",{users:docs});
+      });
+}
 // exports.form_reset = (req,res) =>{
      
 //         Userdb.find().exec(function(err,docs){

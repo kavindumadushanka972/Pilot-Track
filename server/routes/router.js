@@ -23,6 +23,12 @@ route.get('/update-user', services.update_user);
 
 route.get('/sort-turns', services.sort_turns);
 route.get('/sort-accidents', services.sort_accidents);
+route.get('/sort-attendance',services.sort_attendance);
+route.get('/sort-repairs',services.sort_repairs);
+route.get('/sort-complains',services.sort_complains);
+route.get('/sort-disciplinary_actions',services.sort_dis_action);
+route.get('/sort-avgspeed',services.sort_avgspeed);
+route.get('/sort-fuel',services.sort_fuel);
 //route.get('/form-reset', services.form_reset);
 
 // API

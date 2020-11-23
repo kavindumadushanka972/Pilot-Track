@@ -4,11 +4,15 @@
     <td><%= i+1 %></td>
     <td><%= users[i].name %></td>
     <td><%= users[i].emp_num %></td>
-    <td><%= users[i].mob_num %></td>
-    <td><%= users[i].address %></td>
+    <td><%= users[i].att %></td>
     <td><%= users[i].distance %> km</td>
     <td><%= users[i].turns %></td>
     <td><%= users[i].accidents %></td>
+    <td><%= users[i].running_repair %></td>
+    <td><%= users[i].customer_complains %></td>
+    <td><%= users[i].disciplinary_actions %></td>
+    <td><%= users[i].avgspeed_show %>km/h</td>
+    <td><%= users[i].fuel %></td>
     <td>
         <a href="/update-user?id=<%= users[i]._id %>" class="btn border-shadow update">
             <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>

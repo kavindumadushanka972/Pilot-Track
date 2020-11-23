@@ -16,7 +16,14 @@ exports.create = (req,res) =>{
         address: req.body.address,
         distance: req.body.distance,
         turns: req.body.turns,
-        accidents:req.body.accidents
+        accidents:req.body.accidents,
+        att:req.body.att,
+        running_repair: req.body.running_repair,
+        customer_complains: req.body.customer_complains,
+        disciplinary_actions: req.body.disciplinary_actions,
+        fuel: req.body.fuel,
+        avgspeed: req.body.avgspeed,
+        avgspeed_show: req.body.avgspeed_show
     });
 
     // save user in the database
@@ -69,9 +76,18 @@ exports.update = (req, res) =>{
     
         const id = req.params.id; //getting url parameter
         //To update the distance ***********************************
-        req.body.distance = parseFloat(req.body.distance) + parseFloat(req.body.distance_update);
+        req.body.att = parseInt(req.body.att) + parseInt(req.body.att_update);
+        var distance = parseFloat(req.body.distance) + parseFloat(req.body.distance_update);
+        req.body.distance = distance.toFixed(3);
         req.body.turns = parseInt(req.body.turns) + parseInt(req.body.turns_update);
         req.body.accidents = parseInt(req.body.accidents) + parseInt(req.body.accidents_update);
+        req.body.running_repair = parseInt(req.body.running_repair) + parseInt(req.body.running_repair_update);
+        req.body.customer_complains = parseInt(req.body.customer_complains) + parseInt(req.body.customer_complains_update);
+        req.body.disciplinary_actions = parseInt(req.body.disciplinary_actions) + parseInt(req.body.disciplinary_actions_update);
+        req.body.avgspeed = parseFloat(req.body.avgspeed) + parseFloat(req.body.avgspeed_update_1)+parseFloat(req.body.avgspeed_update_2);
+        var avg = req.body.avgspeed/(2*req.body.turns);
+        req.body.avgspeed_show = avg.toFixed(4);
+        req.body.fuel = parseInt(req.body.fuel) + parseInt(req.body.fuel_update);
         //********************************************************** */
         Userdb.findByIdAndUpdate(id, req.body, {useFindAndModify: false})
             .then(data =>{
@@ -113,9 +129,17 @@ exports.form_reset = (req,res) =>{
             {},
             {
                 $set:{
+                    'att':'0',
                     'distance': '0',
                     'turns':'0',
-                    'accidents':'0'
+                    'accidents':'0',
+                    'running_repair':'0',
+                    'customer_complains':'0',
+                    'disciplinary_actions':'0',
+                    'fuel':'0',
+                    'avgspeed':'0',
+                    'avgspeed_show':'_'
+
                 }
             }
         ).exec(function(err,docs){

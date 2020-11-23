@@ -8,20 +8,29 @@ $(document).ready(function(){
     //method to update user data in the database
     $('#update_user').submit(function(event){
         event.preventDefault(); //change the default behaviour
+        var attendance = document.getElementById("att_update").value.trim();
         var distance = document.getElementById("dis_update").value.trim();
         var turns = document.getElementById("turns_update").value.trim();
         var accidents = document.getElementById("acc_update").value.trim();
+        var running_repairs = document.getElementById("running_repair_update").value.trim();
+        var customer_complains = document.getElementById("customer_complains_update").value.trim();
+        var disciplinary_actions = document.getElementById("disciplinary_actions_update").value.trim();
+        var avgspeed1 = document.getElementById("avgspeed_update_1").value.trim();
+        var avgspeed2 = document.getElementById("avgspeed_update_2").value.trim();
+        var fuel = document.getElementById("fuel_update").value.trim();
         var regFloat =  /^\d+(\.\d{0,2})?$/;
-        var regInt = /^\d+$/
-
-        if(regFloat.test(distance) && regInt.test(accidents) && regInt.test(turns)){
+        var regInt = /^\d+$/;
+        var regFuel = /[0-1 -]$/;
+        if((avgspeed1 =="0" && avgspeed2=="0") ||avgspeed1 !="0" && avgspeed2 !="0"){
+            if(regInt.test(attendance) && regFloat.test(distance) && regInt.test(accidents) && regInt.test(turns) && regInt.test(running_repairs) && 
+        regInt.test(customer_complains) && regInt.test(disciplinary_actions) && regFloat.test(avgspeed1) && regFloat.test(avgspeed2) &&regFuel.test(fuel)){
             var unindexed_array = $(this).serializeArray(); //get all the data in the form to an array
             var data = {}
             $.map(unindexed_array, function(n, i){
                 data[n['name']] = n['value']
             })
         
-            console.log(data);
+            //console.log(data);
     
             var request = {
                 "url":`/api/users/${data.id}`,
@@ -34,6 +43,11 @@ $(document).ready(function(){
             })
         }else{
             alert("Check Values You Entered Again!");
+            location.reload();
+        }
+        
+        }else{
+            alert("You must enter both speeds before submitting!");
             location.reload();
         }
     }) 

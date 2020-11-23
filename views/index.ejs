@@ -9,19 +9,38 @@
             <a href="/add-user" class="border-shadow">
                 <span class="text-gradient">New User <i class="fas fa-user"></i></span>
             </a>
+
+            <a href="/sort-attendance" class="border-shadow sort" >
+                <span class="text-gradient">Attendance <i class="fas fa-fingerprint"></i></span>
+            </a>
+        
             <a href="/" class="border-shadow sort" >
-                <span class="text-gradient">Sort by Distance <i class="fas fa-tachometer-alt"></i></span>
+                <span class="text-gradient">Distance <i class="fas fa-tachometer-alt"></i></span>
             </a>
             
             <a href="/sort-turns" class="border-shadow sort" >
-                <span class="text-gradient" id="turns_sort">Sort by Turns <i class="fas fa-truck-moving"></i></span>
+                <span class="text-gradient" id="turns_sort">Turns <i class="fas fa-truck-moving"></i></span>
             </a>
             <a href="/sort-accidents" class="border-shadow sort">
-                <span class="text-gradient">Sort by Accidents <i class="fas fa-car-crash"></i></span>
+                <span class="text-gradient">Accidents <i class="fas fa-car-crash"></i></span>
             </a>
-
+            <a href="/sort-repairs" class="border-shadow sort" >
+                <span class="text-gradient">Repairs <i class="fas fa-tools"></i></span>
+            </a>
+            <a href="/sort-complains" class="border-shadow sort" >
+                <span class="text-gradient">Complains <i class="fas fa-phone-square-alt"></i></span>
+            </a>
+            <a href="/sort-disciplinary_actions" class="border-shadow sort" >
+                <span class="text-gradient">Dis. Actions <i class="fas fa-exclamation-circle"></i></i></span>
+            </a>
+            <a href="/sort-avgspeed" class="border-shadow sort" >
+                <span class="text-gradient">Speed <i class="fas fa-shipping-fast"></i></span>
+            </a>
+            <a href="/sort-fuel" class="border-shadow sort" >
+                <span class="text-gradient">Fuel <i class="fas fa-gas-pump"></i></span>
+            </a>
             <a class="border-shadow-reset">
-                <span class="text-gradient" id="resetbtn">Reset<i class="fas fa-reply"></i></span>
+                <span class="text-gradient" id="resetbtn">Reset <i class="fas fa-power-off"></i></span>
             </a>
         </div>
         <!-- form handeling -->
@@ -31,12 +50,16 @@
                         <tr>
                             <th>Place</th>
                             <th>Name</th>
-                            <th>Emp Number</th>
-                            <th>Mobile</th>
-                            <th>Address</th>
+                            <th>EmpNum</th>
+                            <th>Attendance</th>
                             <th>Distance</th>
                             <th>Turns</th>
                             <th>Accidents</th>
+                            <th>Running <br>Repairs</th>
+                            <th>Customer <br>Complains</th>
+                            <th>Disciplinary <br>Actions</th>
+                            <th>Average <br>Speed</th>
+                            <th>Fuel <br>Usage</th>
                             <th>Action</th>
                             
                         </tr>

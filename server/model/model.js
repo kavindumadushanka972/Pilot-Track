@@ -12,9 +12,16 @@ var scheme = new mongoose.Schema({
     },
     mob_num: String,
     address: String,
+    att: String,
     distance: String,
     turns: String,
-    accidents: String
+    accidents: String,
+    running_repair: String, 
+    customer_complains: String,
+    disciplinary_actions: String,
+    fuel: String,
+    avgspeed: String,
+    avgspeed_show: String
 });
 
 const Userdb = mongoose.model('userdb', scheme);
