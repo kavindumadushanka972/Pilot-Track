@@ -15,7 +15,7 @@ exports.homeRoutes = (req, res) => {
     
 
     //sorting 
-    Userdb.find({}).sort({"turns":-1,"distance": -1, "att":-1, "accidents":1, "running_repair":1, "customer_complains":1, "disciplinary_actions":1, "fuel":-1, "avgspeed_show":-1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+    Userdb.find({}).sort({"distance": -1, "turns":-1, "att":-1, "accidents":1, "running_repair":1, "customer_complains":1, "disciplinary_actions":1, "fuel":-1, "avgspeed_show":-1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
         if (err) throw err;
         //console.log(docs);
         res.render("index",{users:docs});

@@ -1,4 +1,32 @@
-<% for(var i =0; i < users.length; i++){ %>
+
+
+    <tr class="first">
+        <td>1</td>
+        <td><%= users[0].name %></td>
+        <td><%= users[0].emp_num %></td>
+        <td><%= users[0].att %></td>
+        <td><%= users[0].distance %> km</td>
+        <td><%= users[0].turns %></td>
+        <td><%= users[0].accidents %></td>
+        <td><%= users[0].running_repair %></td>
+        <td><%= users[0].customer_complains %></td>
+        <td><%= users[0].disciplinary_actions %></td>
+        <td><%= users[0].avgspeed_show %>km/h</td>
+        <td><%= users[0].fuel %></td>
+        <td>
+            <a href="/update-user?id=<%= users[0]._id %>" class="btn border-shadow update">
+                <span class="text-gradient"><i class="fas fa-pencil-alt"></i></span>
+            </a>
+            <a class="btn border-shadow delete" data-id = <%= users[0]._id %>>
+                <span class="text-gradient"><i class="fas fa-times"></i></span>
+            </a>
+        </td>
+    </tr>
+
+
+
+
+<% for(var i =1; i < users.length; i++){ %>
 
 <tr>
     <td><%= i+1 %></td>

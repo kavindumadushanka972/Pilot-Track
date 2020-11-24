@@ -41,8 +41,13 @@ a{
 .justify-between{
     justify-content: space-between;
 }
+
 .img{
     float: left;
+}
+
+.first td{
+    font-weight: bold;
 }
 
 .text-center{
@@ -127,7 +132,7 @@ table{
     margin: 0.2em; 
 }
 
-.table tr:hover{
+.table  tr:hover{
     background-color: #06d6a0;
 }
 
