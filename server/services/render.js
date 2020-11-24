@@ -15,7 +15,7 @@ exports.homeRoutes = (req, res) => {
     
 
     //sorting 
-    Userdb.find({}).sort({"distance": -1, "turns":-1, "att":-1, "accidents":1, "running_repair":1, "customer_complains":1, "disciplinary_actions":1, "fuel":-1, "avgspeed_show":-1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+    Userdb.find({}).sort({"distance": -1, "avgspeed_show":-1, "turns":-1, "att":-1, "accidents":1, "running_repair":1, "customer_complains":1, "disciplinary_actions":1, "fuel":-1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
         if (err) throw err;
         //console.log(docs);
         res.render("index",{users:docs});
@@ -53,7 +53,7 @@ exports.update_user = (req,res) =>{
 }
 
 exports.sort_turns = (req,res) =>{
-    Userdb.find().sort({"turns": -1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+    Userdb.find().sort({"turns":-1, "distance": -1, "avgspeed_show":-1,"att":-1,  "accidents":1, "running_repair":1, "customer_complains":1, "disciplinary_actions":1, "fuel":-1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
         if (err) throw err;
         console.log(docs);
         res.render("index",{users:docs});
@@ -61,7 +61,7 @@ exports.sort_turns = (req,res) =>{
 }
 
 exports.sort_accidents = (req,res) =>{
-    Userdb.find().sort({"accidents": 1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+    Userdb.find().sort({"accidents":1, "distance": -1,"avgspeed_show":-1, "turns":-1, "att":-1,  "running_repair":1, "customer_complains":1, "disciplinary_actions":1, "fuel":-1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
         if (err) throw err;
         console.log(docs);
         res.render("index",{users:docs});
@@ -69,7 +69,7 @@ exports.sort_accidents = (req,res) =>{
 }
 
 exports.sort_attendance = (req,res) =>{
-    Userdb.find().sort({"att": -1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+    Userdb.find().sort({"att":-1, "distance": -1, "avgspeed_show":-1,"turns":-1,  "accidents":1, "running_repair":1, "customer_complains":1, "disciplinary_actions":1, "fuel":-1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
         if (err) throw err;
         console.log(docs);
         res.render("index",{users:docs});
@@ -77,42 +77,36 @@ exports.sort_attendance = (req,res) =>{
 }
 
 exports.sort_repairs = (req,res) =>{
-    Userdb.find().sort({"running_repair": 1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+    Userdb.find().sort({"running_repair":1,"distance": -1, "avgspeed_show":-1, "turns":-1, "att":-1, "accidents":1,  "customer_complains":1, "disciplinary_actions":1, "fuel":-1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
         if (err) throw err;
         console.log(docs);
         res.render("index",{users:docs});
       });
 }
 exports.sort_complains = (req,res) =>{
-    Userdb.find().sort({"customer_complains": 1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+    Userdb.find().sort({"customer_complains":1, "distance": -1,"avgspeed_show":-1, "turns":-1, "att":-1,  "accidents":1, "running_repair":1, "disciplinary_actions":1, "fuel":-1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
         if (err) throw err;
         console.log(docs);
         res.render("index",{users:docs});
       });
 }
-exports.sort_complains = (req,res) =>{
-    Userdb.find().sort({"customer_complains": 1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
-        if (err) throw err;
-        console.log(docs);
-        res.render("index",{users:docs});
-      });
-}
+
 exports.sort_dis_action = (req,res) =>{
-    Userdb.find().sort({"disciplinary_actions": 1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+    Userdb.find().sort({"disciplinary_actions":1, "distance": -1, "avgspeed_show":-1,  "turns":-1, "att":-1,"accidents":1, "running_repair":1, "customer_complains":1, "fuel":-1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
         if (err) throw err;
         console.log(docs);
         res.render("index",{users:docs});
       });
 }
 exports.sort_fuel = (req,res) =>{
-    Userdb.find().sort({"fuel": -1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+    Userdb.find().sort({"fuel":-1,"distance": -1, "avgspeed_show":-1,"turns":-1, "att":-1,  "accidents":1, "running_repair":1, "customer_complains":1, "disciplinary_actions":1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
         if (err) throw err;
         console.log(docs);
         res.render("index",{users:docs});
       });
 }
 exports.sort_avgspeed = (req,res) =>{
-    Userdb.find().sort({"avgspeed_show": -1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+    Userdb.find().sort({"avgspeed_show":-1,"distance": -1, "turns":-1, "att":-1,  "accidents":1, "running_repair":1, "customer_complains":1, "disciplinary_actions":1, "fuel":-1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
         if (err) throw err;
         console.log(docs);
         res.render("index",{users:docs});
