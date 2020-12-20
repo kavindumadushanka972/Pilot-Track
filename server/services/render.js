@@ -84,7 +84,7 @@ exports.form_reset = (req,res) =>{
             //res.render("index",{users:docs});
         });
 
-        Userdb.find().sort({"distance": -1}).collation({locale: "en_US", numericOrdering: true}).exec(function(err,docs){
+        Userdb.find().exec(function(err,docs){
             if (err) throw err;
             console.log(docs);
             res.render("index",{users:docs});
