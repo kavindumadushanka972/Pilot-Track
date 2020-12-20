@@ -23,10 +23,13 @@ app.use(bodyparser.urlencoded({extended:true}));
 app.set('view engine', 'ejs');
 
 app.use(favicon(__dirname + '/favicon.ico'));
+
 //load assets
 app.use('/css', express.static(path.resolve(__dirname, "assets/css")));
 app.use('/img', express.static(path.resolve(__dirname, "assets/img")));
 app.use('/js', express.static(path.resolve(__dirname, "assets/js")));
+app.use('/upload', express.static(path.resolve(__dirname, "public/uploads")));
+
 
 //load routers
 app.use('/',require('./server/routes/router'));

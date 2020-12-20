@@ -10,20 +10,40 @@ exports.create = (req,res) =>{
 
     //new user
     const user = new Userdb({
-        name: req.body.name,
-        emp_num: req.body.emp_num,
-        mob_num: req.body.mob_num,
-        address: req.body.address,
-        distance: req.body.distance,
-        turns: req.body.turns,
-        accidents:req.body.accidents,
-        att:req.body.att,
-        running_repair: req.body.running_repair,
-        customer_complains: req.body.customer_complains,
-        disciplinary_actions: req.body.disciplinary_actions,
-        fuel: req.body.fuel,
-        avgspeed: req.body.avgspeed,
-        avgspeed_show: req.body.avgspeed_show
+        service_number: req.body.service_number,
+        rank: req.body.rank,
+        name_init: req.body.name_init,
+        jet_total_hrs: req.body.jet_total_hrs,
+        jet_total_mins: req.body.jet_total_mins,
+        jet_6_hrs: req.body.jet_6_hrs,
+        jet_6_mins: req.body.jet_6_mins,
+        piston_total_hrs: req.body.piston_total_hrs,
+        piston_total_mins: req.body.piston_total_mins,
+        piston_6_hrs: req.body.piston_6_hrs,
+        piston_6_mins: req.body.piston_6_mins,
+        actual_total_hrs: req.body.actual_total_hrs,
+        actual_total_mins: req.body.actual_total_mins,
+        actual_6_hrs: req.body.actual_6_hrs,
+        actual_6_mins: req.body.actual_6_mins,
+        simulated_total_hrs: req.body.simulated_total_hrs,
+        simulated_total_mins: req.body.simulated_total_mins,
+        simulated_6_hrs: req.body.simulated_6_hrs,
+        simulated_6_mins: req.body.simulated_6_mins,
+        let_downs: req.body.let_downs,
+        aircraft_type: req.body.aircraft_type,
+        first_pilot_total_hrs: req.body.first_pilot_total_hrs,
+        first_pilot_total_mins: req.body.first_pilot_total_mins,
+        first_pilot_total_6_hrs: req.body.first_pilot_total_6_hrs,
+        first_pilot_total_6_mins: req.body.first_pilot_total_6_mins,
+        instrument_ratings: req.body.instrument_ratings,
+        card_number: req.body.card_number,
+        verification_rank: req.body.verification_rank,
+        verification_name: req.body.verification_name,
+        verification_appoinment: req.body.verification_appoinment,
+        renewed_rating_type: req.body.renewed_rating_type,
+        validity_of_rating: req.body.validity_of_rating,
+        number_of_cards: req.body.number_of_cards,
+        date: req.body.date
     });
 
     // save user in the database
@@ -74,22 +94,10 @@ exports.update = (req, res) =>{
             .send({message: "Data to update can not be empty"})
     }
     
-        const id = req.params.id; //getting url parameter
-        //To update the distance ***********************************
-        req.body.att = parseInt(req.body.att) + parseInt(req.body.att_update);
-        var distance = parseFloat(req.body.distance) + parseFloat(req.body.distance_update);
-        req.body.distance = distance.toFixed(3);
-        req.body.turns = parseInt(req.body.turns) + parseInt(req.body.turns_update);
-        req.body.accidents = parseInt(req.body.accidents) + parseInt(req.body.accidents_update);
-        req.body.running_repair = parseInt(req.body.running_repair) + parseInt(req.body.running_repair_update);
-        req.body.customer_complains = parseInt(req.body.customer_complains) + parseInt(req.body.customer_complains_update);
-        req.body.disciplinary_actions = parseInt(req.body.disciplinary_actions) + parseInt(req.body.disciplinary_actions_update);
-        req.body.avgspeed = parseFloat(req.body.avgspeed) + parseFloat(req.body.avgspeed_update_1)+parseFloat(req.body.avgspeed_update_2);
-        var avg = req.body.avgspeed/(2*req.body.turns);
-        req.body.avgspeed_show = avg.toFixed(4);
-        req.body.fuel = parseInt(req.body.fuel) + parseInt(req.body.fuel_update);
-        //********************************************************** */
-        Userdb.findByIdAndUpdate(id, req.body, {useFindAndModify: false})
+        const service_number = req.params.service_number; //getting url parameter
+
+        
+        Userdb.findOneAndUpdate(service_number, req.body, {useFindAndModify: false})
             .then(data =>{
                 if(!data){
                     res.status(404).send({message: `Cannot update user with $(id). Maybe user not found`})

@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Barlow&family=PT+Sans&display=swap');
 
 :root{
@@ -22,10 +23,25 @@ a{
     cursor: pointer;
 }
 
+.new_user .form-row .form-groupform-group label{
+    justify-content: left;
+    text-align: left;
+}
+
+.container{ 
+    margin-top:auto;
+    margin-bottom:auto;
+    text-align:center;
+    /* display: flex;
+    justify-content: center; */
+    
+}
+
 .container{
     /* max-width: 1024px; */
     margin-left: 10px;
-    margin-right: 10px;  
+    margin-right: 10px; 
+
 }
 
 .nav-brand{

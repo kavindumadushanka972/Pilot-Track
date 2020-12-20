@@ -3,6 +3,7 @@ const route = express.Router();
 
 const services = require('../services/render');
 const controller = require('../controller/controller');
+
 /**
  * @description Root Route
  * @method GET /
@@ -21,20 +22,13 @@ route.get('/add-user', services.add_user);
  */
 route.get('/update-user', services.update_user);
 
-route.get('/sort-turns', services.sort_turns);
-route.get('/sort-accidents', services.sort_accidents);
-route.get('/sort-attendance',services.sort_attendance);
-route.get('/sort-repairs',services.sort_repairs);
-route.get('/sort-complains',services.sort_complains);
-route.get('/sort-disciplinary_actions',services.sort_dis_action);
-route.get('/sort-avgspeed',services.sort_avgspeed);
-route.get('/sort-fuel',services.sort_fuel);
 //route.get('/form-reset', services.form_reset);
 
 // API
 route.post('/api/users', controller.create); //POST is used to send data to a server to create/update a resource.
 route.get('/api/users', controller.find); //GET is used to request data from a specified resource.
-route.put('/api/users/:id', controller.update); //PUT is used to send data to a server to create/update a resource.
+route.put('/api/users/:service_number', controller.update); //PUT is used to send data to a server to create/update a resource.
 route.delete('/api/users/:id', controller.delete); //The DELETE method deletes the specified resource.
 route.get('/api/users/reset', controller.form_reset);
+
 module.exports = route;

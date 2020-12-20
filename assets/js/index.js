@@ -8,90 +8,53 @@ $(document).ready(function(){
     //method to update user data in the database
     $('#update_user').submit(function(event){
         event.preventDefault(); //change the default behaviour
-        var attendance = document.getElementById("att_update").value.trim();
-        var distance = document.getElementById("dis_update").value.trim();
-        var turns = document.getElementById("turns_update").value.trim();
-        var accidents = document.getElementById("acc_update").value.trim();
-        var running_repairs = document.getElementById("running_repair_update").value.trim();
-        var customer_complains = document.getElementById("customer_complains_update").value.trim();
-        var disciplinary_actions = document.getElementById("disciplinary_actions_update").value.trim();
-        var avgspeed1 = document.getElementById("avgspeed_update_1").value.trim();
-        var avgspeed2 = document.getElementById("avgspeed_update_2").value.trim();
-        var fuel = document.getElementById("fuel_update").value.trim();
-        var regFloat =  /^\d+(\.\d{0,2})?$/;
-        var regInt = /^\d+$/;
-        var regFuel = /[0-1 -]$/;
-        if((avgspeed1 =="0" && avgspeed2=="0") ||avgspeed1 !="0" && avgspeed2 !="0"){
-            if(regInt.test(attendance) && regFloat.test(distance) && regInt.test(accidents) && regInt.test(turns) && regInt.test(running_repairs) && 
-        regInt.test(customer_complains) && regInt.test(disciplinary_actions) && regFloat.test(avgspeed1) && regFloat.test(avgspeed2) &&regFuel.test(fuel)){
-            var unindexed_array = $(this).serializeArray(); //get all the data in the form to an array
-            var data = {}
-            $.map(unindexed_array, function(n, i){
-                data[n['name']] = n['value']
-            })
+        console.log("hi");
+        var unindexed_array = $(this).serializeArray(); //get all the data in the form to an array
+        var data = {}
+
+        $.map(unindexed_array, function(n, i){
+            data[n['name']] = n['value']
+        })
         
-            //console.log(data);
-    
-            var request = {
-                "url":`/api/users/${data.id}`,
-                "method": "PUT",
-                "data": data
-            }
-            $.ajax(request).done(function(response){
-                alert("Data updated successfully");
-                location.reload();
-            })
-        }else{
-            alert("Check Values You Entered Again!");
-            location.reload();
+        console.log(data);
+
+        var request = {
+            "url":`/api/users/${data.service_number}`,
+            //"url": window.location.protocol + window.location.host + `/api/users/${data.id}`,
+            "method": "PUT",
+            "data": data
         }
-        
-        }else{
-            alert("You must enter both speeds before submitting!");
-            location.reload();
-        }
+        console.log(request);
+        $.ajax(request).done(function(response){
+            alert("Data updated successfully");
+        })
+
+        // function foo() {
+        //     var httpRequest = new XMLHttpRequest();
+        //     httpRequest.open('PUT', `/api/users/${data.service_number}`);
+        //     httpRequest.send();
+        //     return httpRequest.responseText;
+        // }
+        // var result = foo(); // always ends up being 'undefined'
+        // console.log(result);
+
+//         $.putJSON( `/api/users/${data.service_number}`, data)
+//   .done( function(resp){
+//     // handle response here
+// }).fail(function(){
+//    alert('Oooops');
+// });
+        // $.ajax({
+        //     type: "put",
+        //     url: `/api/users/${data.service_number}`,
+        //     success: function(response){
+        //         alert("Data updated successfully");
+        //     }
+        // });
+
     }) 
     
-    
-        $ondelete = $(".table tbody td a.delete");
-        $ondelete.click(function(){
-            var id = $(this).attr('data-id')
-    
-            var request = {
-                "url":`/api/users/${id}`,
-                "method": "DELETE"
-            }
-    
-            if(confirm("Are you sure?This will delete the details about Driver Permenantly!")){
-                $.ajax(request).done(function(response){
-                    alert("Data deleted successfully");
-                    location.reload()
-                })
-            }
-        })
-    
-    
-    $('#resetbtn').click(function(event){
-            event.preventDefault(); //change the default behaviour
-    
-            var request = {
-                "url":`/api/users/reset`,
-                "method": "GET"
-            }
-            if(confirm("Are you sure?This will reset all the records permanently!")){
-                $.ajax(request).done(function(response){
-                    alert("Data Reset successfull");
-                    location.reload();
-                })
-            }
-    })
 
-    // $("#savebutton").click(function(){
-    //     var distance = document.getElementById("dis_update").value;
-    //     alert(distance);
-        
-    // })
-    
 
 })
 

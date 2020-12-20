@@ -1,108 +1,485 @@
 <!-- include header -->
 <%-include('include/_header') %>
 <!-- /include header -->
-
+<div>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">
+            <img src="/img/logo.png" width="40" height="40" alt="">
+        </a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar_id"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbar_id">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="/" class="nav-link">HOME</a></li>
+                <li class="nav-item"><a href="/add-user" class="nav-link">ADD PILOT</a></li>
+                <li class="nav-item"><a href="" class="nav-link active">EDIT PILOT</a></li>
+                <li class="nav-item"><a href="" class="nav-link">NOTIFICATIONS</a></li>
+                
+        </ul>
+        </collapse>
+    </nav><!-- class="navbar" -->
+</div>
 <!-- Main Site -->
 <main id="site-main">
     <div class="container">
         <div class="box-nav d-flex justify-between">
             <div class="filter">
-                <a href="/"><i class="fas fa-angle-double-left"></i> All Users</a>
+                <a href="/"><i class="fas fa-angle-double-left"></i>Back To HOME Page</a>
             </div>
         </div>
         <div class="form-title text-center">
-            <h2 class="text-dark">Update user</h2>
-            <span class="text-light">Use the below form to update an account</span>
+            <h2 class="text-dark">Update Pilot</h2>
         </div>
+    
+
         <!-- form handeling -->
-        <form onsubmit="return validate()" method="POST" id="update_user">
+        <form method="POST" id="update_user">
             <div class="new_user">
-                <div class="form-group">
-                    <label for="name" class="text-light">Name</label>
-                    <input type="hidden" name="id" value="<%= users.id %>">
-                    <input type="text" name="name" value="<%= users.name %>" placeholder="Mark Stoenis">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="service_number" style="font-size: large; margin-top: 12px; text-align:left">1.Service Number</p>
+                        <input type="hidden" name="id" value="" >
+                    </div>
+        
+                    <div class="form-group col-md-6">
+                        <input type="text" name="service_number" class="form-control" id="service_number" value="<%= users[0].service_number %>">
+                    </div> 
+                </div><!-- class="form-row" -->
+        
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="rank" style="font-size: large; text-align:left">2.Rank</p>
+                    </div>
+        
+                    <div class="form-group col-md-6">
+                        <select class="form-control" id="rank" name="rank">
+                            <option selected><%= users[0].rank %></option>
+                            <option>Pilot Officer (Plt Off)</option>
+                            <option>Flying Officer (Fg Off)</option>
+                            <option>Flight Lieutenant (Flt Lt)</option>
+                            <option>Squadron Leader (Sqn Ldr)</option>
+                            <option>Wing Commander (Wg Cdr)</option>
+                            <option>Group Captain (Gp Capt)</option>
+                            <option>Air Commadore (Air Cmdr)</option>
+                            <option>Air Vice Marshal</option>
+                            <option>Air Marshal</option>
+                            <option>Air Chief Marshal</option>
+                        </select>
+                    </div> 
+                </div><!-- class="form-row" -->
+        
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="name_init" style="font-size: large; margin-top: 12px; text-align:left">3.Name With Initials</p>
+                    </div>
+        
+                    <div class="form-group col-md-6">
+                        <input type="text" name="name_init" class="form-control" id="name_init" area-describedby="" placeholder="Enter Name with Initials" value="<%= users[0].name_init %>">
+                    </div> 
+                </div><!-- class="form-row" -->
+        
+                 
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p style="font-size: large; text-align:left; margin-left: 20px">4.1 First Pilot (JET)</p>
+                    </div>
+                </div><!-- class="form-row" -->
+        
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="jet_total_hrs" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left"><i class="fas fa-angle-right"></i>Total</p>
+                    </div>
+        
+                    <div class="form-group col-md-2">
+                        <input type="text" name="jet_total_hrs" class="form-control" id="jet_total_hrs" area-describedby="" placeholder="" value="<%= users[0].jet_total_hrs %>">
+                    </div> 
+        
+                    <div class="form-group col-md-2">
+                        <p for="jet_total_hrs" style="font-size: large; margin-top: 12px; text-align:left">HRS</p>
+                    </div>
+        
+                    <div class="form-group col-md-2">
+                        <input type="text" name="jet_total_mins" class="form-control" id="jet_total_mins" area-describedby="" placeholder="" required="true" value="<%= users[0].jet_total_mins %>">
+                    </div> 
+        
+                    <div class="form-group col-md-2">
+                        <p for="jet_total_mins" style="font-size: large; margin-top: 12px; text-align:left">MINS</p>
+                    </div>
+                </div><!-- class="form-row" -->
+        
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="jet_6_hrs" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left"><i class="fas fa-angle-right"></i>Last Six Months</p>
+                    </div>
+        
+                    <div class="form-group col-md-2">
+                        <input type="text" name="jet_6_hrs" class="form-control" id="jet_6_hrs" area-describedby="" placeholder="" value="<%= users[0].jet_6_hrs %>">
+                    </div> 
+        
+                    <div class="form-group col-md-2">
+                        <p for="jet_6_hrs" style="font-size: large; margin-top: 12px; text-align:left">HRS</p>
+                    </div>
+        
+                    <div class="form-group col-md-2">
+                        <input type="text" name="jet_6_mins" class="form-control" id="jet_6_mins" area-describedby="" placeholder="" value="<%= users[0].jet_6_mins %>">
+                    </div> 
+        
+                    <div class="form-group col-md-2">
+                        <p for="jet_6_mins" style="font-size: large; margin-top: 12px; text-align:left">MINS</p>
+                    </div>
+                </div><!-- class="form-row" -->
+        
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p style="font-size: large; text-align:left; margin-left: 20px">4.2 First Pilot (PISTON)</p>
+                    </div>
+                </div><!-- class="form-row" -->
+        
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="piston_total_hrs" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left"><i class="fas fa-angle-right"></i>Total</p>
+                    </div>
+        
+                    <div class="form-group col-md-2">
+                        <input type="text" name="piston_total_hrs" class="form-control" id="piston_total_hrs" area-describedby="" placeholder="" value="<%= users[0].piston_total_hrs %>">
+                    </div> 
+        
+                    <div class="form-group col-md-2">
+                        <p for="piston_total_hrs" style="font-size: large; margin-top: 12px; text-align:left">HRS</p>
+                    </div>
+        
+                    <div class="form-group col-md-2">
+                        <input type="text" name="piston_total_mins" class="form-control" id="piston_total_mins" area-describedby="" placeholder="" value="<%= users[0].piston_total_mins %>">
+                    </div> 
+        
+                    <div class="form-group col-md-2">
+                        <p for="piston_total_mins" style="font-size: large; margin-top: 12px; text-align:left">MINS</p>
+                    </div>
+                </div><!-- class="form-row" -->
+        
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="piston_6_hrs" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left"><i class="fas fa-angle-right"></i>Last Six Months</p>
+                    </div>
+        
+                    <div class="form-group col-md-2">
+                        <input type="text" name="piston_6_hrs" class="form-control" id="piston_6_hrs" area-describedby="" placeholder="" value="<%= users[0].piston_6_hrs %>">
+                    </div> 
+        
+                    <div class="form-group col-md-2">
+                        <p for="piston_6_hrs" style="font-size: large; margin-top: 12px; text-align:left">HRS</p>
+                    </div>
+        
+                    <div class="form-group col-md-2">
+                        <input type="text" name="piston_6_mins" class="form-control" id="piston_6_mins" area-describedby="" placeholder="" value="<%= users[0].piston_6_mins %>">
+                    </div> 
+        
+                    <div class="form-group col-md-2">
+                        <p for="piston_6_mins" style="font-size: large; margin-top: 12px; text-align:left">MINS</p>
+                    </div>
+                </div><!-- class="form-row" -->
+        
+        
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <p style="font-size: large; text-align:left; margin-left: 20px">4.3 Instrument Flying (Actual)</p>
+                    </div>
+                </div><!-- class="form-row" -->
+        
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="actual_total_hrs" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left"><i class="fas fa-angle-right"></i>Total</p>
+                    </div>
+        
+                    <div class="form-group col-md-2">
+                        <input type="text" name="actual_total_hrs" class="form-control" id="actual_total_hrs" area-describedby="" placeholder="" value="<%= users[0].actual_total_hrs %>">
+                    </div> 
+        
+                    <div class="form-group col-md-2">
+                        <p for="actual_total_hrs" style="font-size: large; margin-top: 12px; text-align:left">HRS</p>
+                    </div>
+        
+                    <div class="form-group col-md-2">
+                        <input type="text" name="actual_total_mins" class="form-control" id="actual_total_mins" area-describedby="" placeholder="" value="<%= users[0].actual_total_mins %>">
+                    </div> 
+        
+                    <div class="form-group col-md-2">
+                        <p for="actual_total_mins" style="font-size: large; margin-top: 12px; text-align:left">MINS</p>
+                    </div>
+                </div><!-- class="form-row" -->
+        
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="actual_6_hrs" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left"><i class="fas fa-angle-right"></i>Last Six Months</p>
+                    </div>
+        
+                    <div class="form-group col-md-2">
+                        <input type="text" name="actual_6_hrs" class="form-control" id="actual_6_hrs" area-describedby="" placeholder="" value="<%= users[0].actual_6_hrs %>">
+                    </div> 
+        
+                    <div class="form-group col-md-2">
+                        <p for="actual_6_hrs" style="font-size: large; margin-top: 12px; text-align:left">HRS</p>
+                    </div>
+        
+                    <div class="form-group col-md-2">
+                        <input type="text" name="actual_6_mins" class="form-control" id="actual_6_mins" area-describedby="" placeholder="" value="<%= users[0].actual_6_mins %>">
+                    </div> 
+        
+                    <div class="form-group col-md-2">
+                        <p for="actual_6_mins" style="font-size: large; margin-top: 12px; text-align:left">MINS</p>
+                    </div>
+                </div><!-- class="form-row" -->
+        
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <p style="font-size: large; text-align:left; margin-left: 20px">4.4 Instrument Flying (Simulated)</p>
+                    </div>
+                </div><!-- class="form-row" -->
+        
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="simulated_total_hrs" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left"><i class="fas fa-angle-right"></i>Total</p>
+                    </div>
+        
+                    <div class="form-group col-md-2">
+                        <input type="text" name="simulated_total_hrs" class="form-control" id="simulated_total_hrs" area-describedby="" placeholder="" value="<%= users[0].simulated_total_hrs %>">
+                    </div> 
+        
+                    <div class="form-group col-md-2">
+                        <p for="simulated_total_hrs" style="font-size: large; margin-top: 12px; text-align:left">HRS</p>
+                    </div>
+        
+                    <div class="form-group col-md-2">
+                        <input type="text" name="simulated_total_mins" class="form-control" id="simulated_total_mins" area-describedby="" placeholder="" value="<%= users[0].simulated_total_mins %>">
+                    </div> 
+        
+                    <div class="form-group col-md-2">
+                        <p for="simulated_total_mins" style="font-size: large; margin-top: 12px; text-align:left">MINS</p>
+                    </div>
+                </div><!-- class="form-row" -->
+        
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="simulated_6_hrs" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left"><i class="fas fa-angle-right"></i>Last Six Months</p>
+                    </div>
+        
+                    <div class="form-group col-md-2">
+                        <input type="text" name="simulated_6_hrs" class="form-control" id="simulated_6_hrs" area-describedby="" placeholder="" value="<%= users[0].simulated_6_hrs %>">
+                    </div> 
+        
+                    <div class="form-group col-md-2">
+                        <p for="simulated_6_hrs" style="font-size: large; margin-top: 12px; text-align:left">HRS</p>
+                    </div>
+        
+                    <div class="form-group col-md-2">
+                        <input type="text" name="simulated_6_mins" class="form-control" id="simulated_6_mins" area-describedby="" placeholder="" value="<%= users[0].simulated_6_mins %>">
+                    </div> 
+        
+                    <div class="form-group col-md-2">
+                        <p for="simulated_6_mins" style="font-size: large; margin-top: 12px; text-align:left">MINS</p>
+                    </div>
+                </div><!-- class="form-row" -->
+        
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <p style="font-size: large; text-align:left; margin-left: 20px">4.5 Let Downs</p>
+                    </div>
+                </div><!-- class="form-row" -->
+        
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="let_downs" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left"><i class="fas fa-angle-right"></i>Last Six Months</p>
+                    </div>
+            
+                    <div class="form-group col-md-2">
+                        <input type="text" name="let_downs" class="form-control" id="let_downs" area-describedby="" placeholder="" value="<%= users[0].let_downs %>">
+                    </div> 
+                </div>
+        
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="aircraft_type" style="font-size: large; text-align:left">5.Aircraft Type</p>
+                    </div>
+        
+                    <div class="form-group col-md-6">
+                        <select class="form-control" id="aircraft_type" name="aircraft_type">
+                            <option selected><%= users[0].aircraft_type %></option>
+                            <option>Bell 212</option>
+                            <option>Bell 412</option>
+                            <option>MI-17</option>
+                        </select>
+                    </div> 
+                </div><!-- class="form-row" -->
+        
+        
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="first_pilot_total_hrs" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left">5.1 Total First Pilot Hours</p>
+                    </div>
+        
+                    <div class="form-group col-md-2">
+                        <input type="text" name="first_pilot_total_hrs" class="form-control" id="piston_total_hrs" area-describedby="" placeholder="" value="<%= users[0].first_pilot_total_hrs %>">
+                    </div> 
+        
+                    <div class="form-group col-md-2">
+                        <p for="first_pilot_total_hrs" style="font-size: large; margin-top: 12px; text-align:left">HRS</p>
+                    </div>
+        
+                    <div class="form-group col-md-2">
+                        <input type="text" name="first_pilot_total_mins" class="form-control" id="first_pilot_total_mins" area-describedby="" placeholder="" value="<%= users[0].first_pilot_total_mins %>">
+                    </div> 
+        
+                    <div class="form-group col-md-2">
+                        <p for="first_pilot_total_mins" style="font-size: large; margin-top: 12px; text-align:left">MINS</p>
+                    </div>
+                </div><!-- class="form-row" -->
+        
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="first_pilot_total_6_hrs" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left">5.2 Total First Pilot Hours (Last 6 Months)</p>
+                    </div>
+        
+                    <div class="form-group col-md-2">
+                        <input type="text" name="first_pilot_total_6_hrs" class="form-control" id="first_pilot_total_6_hrs" area-describedby="" placeholder="" value="<%= users[0].first_pilot_total_6_hrs %>">
+                    </div> 
+        
+                    <div class="form-group col-md-2">
+                        <p for="first_pilot_total_6_hrs" style="font-size: large; margin-top: 12px; text-align:left">HRS</p>
+                    </div>
+        
+                    <div class="form-group col-md-2">
+                        <input type="text" name="first_pilot_total_6_mins" class="form-control" id="first_pilot_total_6_mins" area-describedby="" placeholder="" value="<%= users[0].first_pilot_total_6_mins %>">
+                    </div> 
+        
+                    <div class="form-group col-md-2">
+                        <p for="piston_6_mins" style="font-size: large; margin-top: 12px; text-align:left">MINS</p>
+                    </div>
+                </div><!-- class="form-row" -->
+                
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="instrument_ratings" style="font-size: large; text-align:left">6.Current Instrument Rating</p>
+                    </div>
+        
+                    <div class="form-group col-md-6">
+                        <select class="form-control" id="instrument_ratings" name="instrument_ratings">
+                            <option selected><%= users[0].instrument_ratings %></option>
+                            <option>White</option>
+                            <option>Green</option>
+                            <option>Master Green</option>
+                        </select>
+                    </div> 
+                </div>
+        
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="card_number" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left">6.1 Card Number</p>
+                    </div>
+        
+                    <div class="form-group col-md-6">
+                        <input type="text" name="card_number" class="form-control" id="card_number" area-describedby="" placeholder="Card Number" value="<%= users[0].card_number %>">
+                    </div> 
+                </div>
+        
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <p for="verification" style="font-size: large; text-align:left">7.Verification (Details Checked By)</p>
+                    </div>
+                </div>
+        
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="verification_rank" style="font-size: large; margin-left: 50px; text-align:left">7.1 Rank</p>
+                    </div>
+        
+                    <div class="form-group col-md-6">
+                        <select class="form-control" id="verification_rank" name="verification_rank">
+                            <option selected><%= users[0].verification_rank %></option>
+                            <option>Pilot Officer (Plt Off)</option>
+                            <option>Flying Officer (Fg Off)</option>
+                            <option>Flight Lieutenant (Flt Lt)</option>
+                            <option>Squadron Leader (Sqn Ldr)</option>
+                            <option>Wing Commander (Wg Cdr)</option>
+                            <option>Group Captain (Gp Capt)</option>
+                            <option>Air Commadore (Air Cmdr)</option>
+                            <option>Air Vice Marshal</option>
+                            <option>Air Marshal</option>
+                            <option>Air Chief Marshal</option>
+                        </select>
+                    </div> 
+                </div>
+        
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="verification_name" style="font-size: large; margin-left: 50px;margin-top: 12px; text-align:left">7.2 Name</p>
+                    </div>
+        
+                    <div class="form-group col-md-6">
+                        <input type="text" name="verification_name" class="form-control" id="verification_name" area-describedby="" placeholder="Name" value="<%= users[0].verification_name %>">
+                    </div> 
+                </div>
+        
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="verification_appoinment" style="font-size: large; margin-left: 50px;margin-top: 12px; text-align:left">7.3 Appoinment</p>
+                    </div>
+        
+                    <div class="form-group col-md-6">
+                        <input type="text" name="verification_appoinment" class="form-control" id="verification_appoinment" area-describedby="" placeholder="Appoinment" value="<%= users[0].verification_appoinment %>">
+                    </div> 
+                </div>
+        
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <p for="renewed" style="font-size: large; text-align:left">8.Details of Renewed Rating</p>
+                    </div>
+                </div>
+        
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="renewed_rating_type" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left">8.1 Type of Rating</p>
+                    </div>
+        
+                    <div class="form-group col-md-6">
+                        <input type="text" name="renewed_rating_type" class="form-control" id="renewed_rating_type" area-describedby="" placeholder="Type of Rating" value="<%= users[0].renewed_rating_type %>">
+                    </div> 
+                </div>
+        
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="validity_of_rating" style="font-size: large; margin-left: 50px; text-align:left">8.2 Validity of Rating</p>
+                    </div>
+        
+                    <div class="form-group col-md-6">
+                        <select class="form-control" id="validity_of_rating" name="validity_of_rating">
+                            <option selected><%= users[0].validity_of_rating %></option>
+                            <option>White</option>
+                            <option>Green</option>
+                            <option>Master Green</option>
+                        </select>
+                    </div> 
                 </div>
                 
-                <div class="form-group">
-                    <label for="emp_num" class="text-light">Employee Number</label>
-                    <input type="text" name="emp_num" value="<%= users.emp_num %>" placeholder="Enter the address">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="number_of_cards" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left">8.3 Number of Cards Issued / Renewed</p>
+                    </div>
+        
+                    <div class="form-group col-md-6">
+                        <input type="text" name="number_of_cards" class="form-control" id="number_of_cards" area-describedby="" placeholder="Type of Rating" value="<%= users[0].number_of_cards %>">
+                    </div> 
                 </div>
-
-                <div class="form-group">
-                    <!-- <label for="current-distance" class="text-light">Current Distance in km</label> -->
-                    <input type="hidden" name="att" readonly value=<%= users.att %>>
-                    <label for="att" class="update">Attendance</label>
-                    <input type="text" name="att_update" value="0" id="att_update">
+        
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <p for="date" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left">8.4 Date of Issue</p>
+                    </div>
+        
+                    <div class="form-group col-md-6">
+                        <input type="date" name="date" class="form-control" id="date" area-describedby="" placeholder="date" value="<%= users[0].date %>">
+                    </div> 
                 </div>
-                
-
-                <div class="form-group">
-                    <!-- <label for="current-distance" class="text-light">Current Distance in km</label> -->
-                    <input type="hidden" name="distance" readonly value=<%= users.distance %>>
-                    <label for="current-distance" class="update">Distance (km)</label>
-                    <input type="text" name="distance_update" value="0" id="dis_update">
-                </div>
-                
-                <div class="form-group">
-                    <!-- <label for="turns" class="text-light">Current Number of Turns</label> -->
-                    <input type="hidden" name="turns" readonly value=<%= users.turns %>>
-                    <label for="turns" class="update">Turns</label>
-                    <input type="text" name="turns_update" value="0" id="turns_update">
-                </div>
-
-                <div class="form-group">
-                    <!-- <label for="accidents" class="text-light">Current Number of Accidents</label> -->
-                    <input type="hidden" name="accidents" readonly value=<%= users.accidents %>>
-                    <label for="accidents" class="update">Accidents</label>
-                    <input type="text" name="accidents_update" value="0" id="acc_update">
-                </div>
-                <div class="form-group">
-                    <!-- <label for="accidents" class="text-light">Current Number of Accidents</label> -->
-                    <input type="hidden" name="running_repair" readonly value=<%= users.running_repair %>>
-                    <label for="running_repair" class="update">Running Repairs</label>
-                    <input type="text" name="running_repair_update" value="0" id="running_repair_update">
-                </div>
-                <div class="form-group">
-                    <!-- <label for="accidents" class="text-light">Current Number of Accidents</label> -->
-                    <input type="hidden" name="customer_complains" readonly value=<%= users.customer_complains %>>
-                    <label for="customer_complains" class="update">Customer Complains</label>
-                    <input type="text" name="customer_complains_update" value="0" id="customer_complains_update">
-                </div>
-                <div class="form-group clearfix">
-                    <!-- <label for="accidents" class="text-light">Current Number of Accidents</label> -->
-                    <input type="hidden" name="disciplinary_actions" readonly value=<%= users.disciplinary_actions %>>
-                    <label for="disciplinary_actions" class="update">Disciplinary Actions</label>
-                    <input type="text" name="disciplinary_actions_update" value="0" id="disciplinary_actions_update">
-                </div>
-
-                <div class="form-group-speed clearfix">
-                    <!-- <label for="accidents" class="text-light">Current Number of Accidents</label> -->
-                    <input type="hidden" name="avgspeed" readonly value=<%= users.avgspeed %>>
-                    <label for="avgspeed" class="update">Average Speed (km/h)</label><br>
-                    <input type="text" name="avgspeed_update_1" value="0" id="avgspeed_update_1">
-                    <input type="text" name="avgspeed_update_2" value="0" id="avgspeed_update_2">
-                </div>
-
-                <div class="form-group clearfix">
-                    <!-- <label for="accidents" class="text-light">Current Number of Accidents</label> -->
-                    <input type="hidden" name="fuel" readonly value=<%= users.fuel %>>
-                    <label for="fuel" class="update">Fuel Usage</label>
-                    <input type="text" name="fuel_update" value="0" id="fuel_update">
-                </div>
-
-                <div class="form-group">
-                    <label for="mob_num" class="text-light">Mobile Number</label>
-                    <input type="text" name="mob_num" value="<%= users.mob_num %>" placeholder="Enter the address">
-                </div>
-                
-                <div class="form-group">
-                    <label for="Address" class="text-light">Address</label>
-                    <input type="text" name="address" value="<%= users.address %>" placeholder="Enter the address">
-                </div>
-                
-                <div class="form-group">
-                    <button type="submit" class="btn text-dark update" id="savebutton">Save</button>
-                </div>
+                <br>
+		        <button type="submit" class="btn btn-danger">Submit</button>
             </div>
         </form>
         <!-- /form handeling -->

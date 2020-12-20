@@ -1,75 +1,451 @@
 <form action="/api/users" onsubmit="return validate()" method="POST" id="add_user" >
     <div class="new_user">
-        <div class="form-group">
-            <label for="name" class="text-light">Name</label>
-            <input type="hidden" name="id" value="" >
-            <input type="text" name="name" value="" placeholder="Enter the Name" required>
-        </div>
-        <div class="form-group">
-            <label for="emp_num" class="text-light">Employee Number</label>
-            <input type="text" name="emp_num" value="" placeholder="Enter the employee number" required>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="service_number" style="font-size: large; margin-top: 12px; text-align:left">1.Service Number</p>
+                <input type="hidden" name="id" value="" >
+            </div>
+
+            <div class="form-group col-md-6">
+                <input type="text" name="service_number" class="form-control" id="service_number" area-describedby="" placeholder="Enter Service Number Here" required="true">
+            </div> 
+        </div><!-- class="form-row" -->
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="rank" style="font-size: large; text-align:left">2.Rank</p>
+            </div>
+
+            <div class="form-group col-md-6">
+                <select class="form-control" id="rank" name="rank">
+                    <option selected>Choose..</option>
+                    <option>Pilot Officer (Plt Off)</option>
+                    <option>Flying Officer (Fg Off)</option>
+                    <option>Flight Lieutenant (Flt Lt)</option>
+                    <option>Squadron Leader (Sqn Ldr)</option>
+                    <option>Wing Commander (Wg Cdr)</option>
+                    <option>Group Captain (Gp Capt)</option>
+                    <option>Air Commadore (Air Cmdr)</option>
+                    <option>Air Vice Marshal</option>
+                    <option>Air Marshal</option>
+                    <option>Air Chief Marshal</option>
+                </select>
+            </div> 
+        </div><!-- class="form-row" -->
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="name_init" style="font-size: large; margin-top: 12px; text-align:left">3.Name With Initials</p>
+            </div>
+
+            <div class="form-group col-md-6">
+                <input type="text" name="name_init" class="form-control" id="name_init" area-describedby="" placeholder="Enter Name with Initials" required="true">
+            </div> 
+        </div><!-- class="form-row" -->
+
+         
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p style="font-size: large; text-align:left; margin-left: 20px">4.1 First Pilot (JET)</p>
+            </div>
+        </div><!-- class="form-row" -->
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="jet_total_hrs" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left"><i class="fas fa-angle-right"></i>Total</p>
+            </div>
+
+            <div class="form-group col-md-2">
+                <input type="text" name="jet_total_hrs" class="form-control" id="jet_total_hrs" area-describedby="" placeholder="" required="true">
+            </div> 
+
+            <div class="form-group col-md-2">
+                <p for="jet_total_hrs" style="font-size: large; margin-top: 12px; text-align:left">HRS</p>
+            </div>
+
+            <div class="form-group col-md-2">
+                <input type="text" name="jet_total_mins" class="form-control" id="jet_total_mins" area-describedby="" placeholder="" required="true">
+            </div> 
+
+            <div class="form-group col-md-2">
+                <p for="jet_total_mins" style="font-size: large; margin-top: 12px; text-align:left">MINS</p>
+            </div>
+        </div><!-- class="form-row" -->
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="jet_6_hrs" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left"><i class="fas fa-angle-right"></i>Last Six Months</p>
+            </div>
+
+            <div class="form-group col-md-2">
+                <input type="text" name="jet_6_hrs" class="form-control" id="jet_6_hrs" area-describedby="" placeholder="" required="true">
+            </div> 
+
+            <div class="form-group col-md-2">
+                <p for="jet_6_hrs" style="font-size: large; margin-top: 12px; text-align:left">HRS</p>
+            </div>
+
+            <div class="form-group col-md-2">
+                <input type="text" name="jet_6_mins" class="form-control" id="jet_6_mins" area-describedby="" placeholder="" required="true">
+            </div> 
+
+            <div class="form-group col-md-2">
+                <p for="jet_6_mins" style="font-size: large; margin-top: 12px; text-align:left">MINS</p>
+            </div>
+        </div><!-- class="form-row" -->
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p style="font-size: large; text-align:left; margin-left: 20px">4.2 First Pilot (PISTON)</p>
+            </div>
+        </div><!-- class="form-row" -->
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="piston_total_hrs" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left"><i class="fas fa-angle-right"></i>Total</p>
+            </div>
+
+            <div class="form-group col-md-2">
+                <input type="text" name="piston_total_hrs" class="form-control" id="piston_total_hrs" area-describedby="" placeholder="" required="true">
+            </div> 
+
+            <div class="form-group col-md-2">
+                <p for="piston_total_hrs" style="font-size: large; margin-top: 12px; text-align:left">HRS</p>
+            </div>
+
+            <div class="form-group col-md-2">
+                <input type="text" name="piston_total_mins" class="form-control" id="piston_total_mins" area-describedby="" placeholder="" required="true">
+            </div> 
+
+            <div class="form-group col-md-2">
+                <p for="piston_total_mins" style="font-size: large; margin-top: 12px; text-align:left">MINS</p>
+            </div>
+        </div><!-- class="form-row" -->
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="piston_6_hrs" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left"><i class="fas fa-angle-right"></i>Last Six Months</p>
+            </div>
+
+            <div class="form-group col-md-2">
+                <input type="text" name="piston_6_hrs" class="form-control" id="piston_6_hrs" area-describedby="" placeholder="" required="true">
+            </div> 
+
+            <div class="form-group col-md-2">
+                <p for="piston_6_hrs" style="font-size: large; margin-top: 12px; text-align:left">HRS</p>
+            </div>
+
+            <div class="form-group col-md-2">
+                <input type="text" name="piston_6_mins" class="form-control" id="piston_6_mins" area-describedby="" placeholder="" required="true">
+            </div> 
+
+            <div class="form-group col-md-2">
+                <p for="piston_6_mins" style="font-size: large; margin-top: 12px; text-align:left">MINS</p>
+            </div>
+        </div><!-- class="form-row" -->
+
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <p style="font-size: large; text-align:left; margin-left: 20px">4.3 Instrument Flying (Actual)</p>
+            </div>
+        </div><!-- class="form-row" -->
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="actual_total_hrs" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left"><i class="fas fa-angle-right"></i>Total</p>
+            </div>
+
+            <div class="form-group col-md-2">
+                <input type="text" name="actual_total_hrs" class="form-control" id="actual_total_hrs" area-describedby="" placeholder="" required="true">
+            </div> 
+
+            <div class="form-group col-md-2">
+                <p for="actual_total_hrs" style="font-size: large; margin-top: 12px; text-align:left">HRS</p>
+            </div>
+
+            <div class="form-group col-md-2">
+                <input type="text" name="actual_total_mins" class="form-control" id="actual_total_mins" area-describedby="" placeholder="" required="true">
+            </div> 
+
+            <div class="form-group col-md-2">
+                <p for="actual_total_mins" style="font-size: large; margin-top: 12px; text-align:left">MINS</p>
+            </div>
+        </div><!-- class="form-row" -->
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="actual_6_hrs" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left"><i class="fas fa-angle-right"></i>Last Six Months</p>
+            </div>
+
+            <div class="form-group col-md-2">
+                <input type="text" name="actual_6_hrs" class="form-control" id="actual_6_hrs" area-describedby="" placeholder="" required="true">
+            </div> 
+
+            <div class="form-group col-md-2">
+                <p for="actual_6_hrs" style="font-size: large; margin-top: 12px; text-align:left">HRS</p>
+            </div>
+
+            <div class="form-group col-md-2">
+                <input type="text" name="actual_6_mins" class="form-control" id="actual_6_mins" area-describedby="" placeholder="" required="true">
+            </div> 
+
+            <div class="form-group col-md-2">
+                <p for="actual_6_mins" style="font-size: large; margin-top: 12px; text-align:left">MINS</p>
+            </div>
+        </div><!-- class="form-row" -->
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <p style="font-size: large; text-align:left; margin-left: 20px">4.4 Instrument Flying (Simulated)</p>
+            </div>
+        </div><!-- class="form-row" -->
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="simulated_total_hrs" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left"><i class="fas fa-angle-right"></i>Total</p>
+            </div>
+
+            <div class="form-group col-md-2">
+                <input type="text" name="simulated_total_hrs" class="form-control" id="simulated_total_hrs" area-describedby="" placeholder="" required="true">
+            </div> 
+
+            <div class="form-group col-md-2">
+                <p for="simulated_total_hrs" style="font-size: large; margin-top: 12px; text-align:left">HRS</p>
+            </div>
+
+            <div class="form-group col-md-2">
+                <input type="text" name="simulated_total_mins" class="form-control" id="simulated_total_mins" area-describedby="" placeholder="" required="true">
+            </div> 
+
+            <div class="form-group col-md-2">
+                <p for="simulated_total_mins" style="font-size: large; margin-top: 12px; text-align:left">MINS</p>
+            </div>
+        </div><!-- class="form-row" -->
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="simulated_6_hrs" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left"><i class="fas fa-angle-right"></i>Last Six Months</p>
+            </div>
+
+            <div class="form-group col-md-2">
+                <input type="text" name="simulated_6_hrs" class="form-control" id="simulated_6_hrs" area-describedby="" placeholder="" required="true">
+            </div> 
+
+            <div class="form-group col-md-2">
+                <p for="simulated_6_hrs" style="font-size: large; margin-top: 12px; text-align:left">HRS</p>
+            </div>
+
+            <div class="form-group col-md-2">
+                <input type="text" name="simulated_6_mins" class="form-control" id="simulated_6_mins" area-describedby="" placeholder="" required="true">
+            </div> 
+
+            <div class="form-group col-md-2">
+                <p for="simulated_6_mins" style="font-size: large; margin-top: 12px; text-align:left">MINS</p>
+            </div>
+        </div><!-- class="form-row" -->
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <p style="font-size: large; text-align:left; margin-left: 20px">4.5 Let Downs</p>
+            </div>
+        </div><!-- class="form-row" -->
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="let_downs" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left"><i class="fas fa-angle-right"></i>Last Six Months</p>
+            </div>
+    
+            <div class="form-group col-md-2">
+                <input type="text" name="let_downs" class="form-control" id="let_downs" area-describedby="" placeholder="" required="true">
+            </div> 
         </div>
 
-        <div class="form-group">
-            <label for="mob_num" class="text-light">Mobile Number</label>
-            <input type="text" name="mob_num" id="mobi_num" value="" placeholder="Enter the Mobile Number">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="rank" style="font-size: large; text-align:left">5.Aircraft Type</p>
+            </div>
+
+            <div class="form-group col-md-6">
+                <select class="form-control" id="aircraft_type" name="aircraft_type">
+                    <option selected>Choose..</option>
+                    <option>Bell 212</option>
+                    <option>Bell 412</option>
+                    <option>MI-17</option>
+                </select>
+            </div> 
+        </div><!-- class="form-row" -->
+
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="first_pilot_total_hrs" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left">5.1 Total First Pilot Hours</p>
+            </div>
+
+            <div class="form-group col-md-2">
+                <input type="text" name="first_pilot_total_hrs" class="form-control" id="piston_total_hrs" area-describedby="" placeholder="" required="true">
+            </div> 
+
+            <div class="form-group col-md-2">
+                <p for="first_pilot_total_hrs" style="font-size: large; margin-top: 12px; text-align:left">HRS</p>
+            </div>
+
+            <div class="form-group col-md-2">
+                <input type="text" name="first_pilot_total_mins" class="form-control" id="first_pilot_total_mins" area-describedby="" placeholder="" required="true">
+            </div> 
+
+            <div class="form-group col-md-2">
+                <p for="first_pilot_total_mins" style="font-size: large; margin-top: 12px; text-align:left">MINS</p>
+            </div>
+        </div><!-- class="form-row" -->
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="first_pilot_total_6_hrs" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left">5.2 Total First Pilot Hours (Last 6 Months)</p>
+            </div>
+
+            <div class="form-group col-md-2">
+                <input type="text" name="first_pilot_total_6_hrs" class="form-control" id="first_pilot_total_6_hrs" area-describedby="" placeholder="" required="true">
+            </div> 
+
+            <div class="form-group col-md-2">
+                <p for="first_pilot_total_6_hrs" style="font-size: large; margin-top: 12px; text-align:left">HRS</p>
+            </div>
+
+            <div class="form-group col-md-2">
+                <input type="text" name="first_pilot_total_6_mins" class="form-control" id="first_pilot_total_6_mins" area-describedby="" placeholder="" required="true">
+            </div> 
+
+            <div class="form-group col-md-2">
+                <p for="piston_6_mins" style="font-size: large; margin-top: 12px; text-align:left">MINS</p>
+            </div>
+        </div><!-- class="form-row" -->
+        
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="instrument_ratings" style="font-size: large; text-align:left">6.Current Instrument Rating</p>
+            </div>
+
+            <div class="form-group col-md-6">
+                <select class="form-control" id="instrument_ratings" name="instrument_ratings">
+                    <option selected>Choose..</option>
+                    <option>White</option>
+                    <option>Green</option>
+                    <option>Master Green</option>
+                </select>
+            </div> 
         </div>
 
-        <div class="form-group">
-            <label for="Address" class="text-light">Address</label>
-            <input type="text" name="address" value="" placeholder="Enter the Address">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="card_number" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left">6.1 Card Number</p>
+            </div>
+
+            <div class="form-group col-md-6">
+                <input type="text" name="card_number" class="form-control" id="card_number" area-describedby="" placeholder="Card Number" required="true">
+            </div> 
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <p for="verification" style="font-size: large; text-align:left">7.Verification (Details Checked By)</p>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="verification_rank" style="font-size: large; margin-left: 50px; text-align:left">7.1 Rank</p>
+            </div>
+
+            <div class="form-group col-md-6">
+                <select class="form-control" id="verification_rank" name="verification_rank">
+                    <option selected>Choose..</option>
+                    <option>Pilot Officer (Plt Off)</option>
+                    <option>Flying Officer (Fg Off)</option>
+                    <option>Flight Lieutenant (Flt Lt)</option>
+                    <option>Squadron Leader (Sqn Ldr)</option>
+                    <option>Wing Commander (Wg Cdr)</option>
+                    <option>Group Captain (Gp Capt)</option>
+                    <option>Air Commadore (Air Cmdr)</option>
+                    <option>Air Vice Marshal</option>
+                    <option>Air Marshal</option>
+                    <option>Air Chief Marshal</option>
+                </select>
+            </div> 
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="verification_name" style="font-size: large; margin-left: 50px;margin-top: 12px; text-align:left">7.2 Name</p>
+            </div>
+
+            <div class="form-group col-md-6">
+                <input type="text" name="verification_name" class="form-control" id="verification_name" area-describedby="" placeholder="Name" required="true">
+            </div> 
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="verification_appoinment" style="font-size: large; margin-left: 50px;margin-top: 12px; text-align:left">7.3 Appoinment</p>
+            </div>
+
+            <div class="form-group col-md-6">
+                <input type="text" name="verification_appoinment" class="form-control" id="verification_appoinment" area-describedby="" placeholder="Appoinment" required="true">
+            </div> 
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <p for="renewed" style="font-size: large; text-align:left">8.Details of Renewed Rating</p>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="renewed_rating_type" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left">8.1 Type of Rating</p>
+            </div>
+
+            <div class="form-group col-md-6">
+                <input type="text" name="renewed_rating_type" class="form-control" id="renewed_rating_type" area-describedby="" placeholder="Type of Rating" required="true">
+            </div> 
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="validity_of_rating" style="font-size: large; margin-left: 50px; text-align:left">8.2 Validity of Rating</p>
+            </div>
+
+            <div class="form-group col-md-6">
+                <select class="form-control" id="validity_of_rating" name="validity_of_rating">
+                    <option selected>Choose..</option>
+                    <option>White</option>
+                    <option>Green</option>
+                    <option>Master Green</option>
+                </select>
+            </div> 
         </div>
         
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="number_of_cards" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left">8.3 Number of Cards Issued / Renewed</p>
+            </div>
+
+            <div class="form-group col-md-6">
+                <input type="text" name="number_of_cards" class="form-control" id="number_of_cards" area-describedby="" placeholder="Type of Rating" required="true">
+            </div> 
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="date" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left">8.4 Date of Issue</p>
+            </div>
+
+            <div class="form-group col-md-6">
+                <input type="date" name="date" class="form-control" id="date" area-describedby="" placeholder="date" required="true">
+            </div> 
+        </div>
         <br>
-
-        <div class="form-group">
-            <!-- <label for="emp_num" class="text-light">Attendance</label> -->
-            <input type="hidden" name="att" value=0 readonly>
-        </div>
-
-        <div class="form-group">
-            <!-- <label for="distance" class="text-light">Distance</label> -->
-            <input type="hidden" name="distance" value=0 readonly>
-        </div>
-
-        <div class="form-group">
-            <!-- <label for="turns" class="text-light">Turns</label> -->
-            <input type="hidden" name="turns" value=0 readonly>
-        </div>
-
-        <div class="form-group">
-            <!-- <label for="accidents" class="text-light">Accidents</label> -->
-            <input type="hidden" name="accidents" value=0 readonly>
-        </div>
-
-        <div class="form-group">
-            <!-- <label for="accidents" class="text-light">Accidents</label> -->
-            <input type="hidden" name="running_repair" value=0 readonly>
-        </div>
-
-        <div class="form-group">
-            <!-- <label for="accidents" class="text-light">Accidents</label> -->
-            <input type="hidden" name="customer_complains" value=0 readonly>
-        </div>
-
-        <div class="form-group">
-            <!-- <label for="accidents" class="text-light">Accidents</label> -->
-            <input type="hidden" name="disciplinary_actions" value=0 readonly>
-        </div>
-
-        <div class="form-group">
-            <!-- <label for="accidents" class="text-light">Accidents</label> -->
-            <input type="hidden" name="fuel" value=0 readonly>
-        </div>
-        <div class="form-group">
-            <!-- <label for="accidents" class="text-light">Accidents</label> -->
-            <input type="hidden" name="avgspeed" value=0 readonly>
-            <input type="hidden" name="avgspeed_show" value="_" readonly>
-        </div>
-      
-        <div class="form-group">
-            <button type="submit" class="btn text-dark update" id="savebtn" >Save</button>
-        </div>
+		<button type="submit" class="btn btn-danger">Submit</button>
     </div>
 </form>
 

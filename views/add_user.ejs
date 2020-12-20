@@ -1,18 +1,33 @@
 <!-- include header -->
 <%-include('include/_header') %>
 <!-- /include header -->
-
+<div>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">
+            <img src="/img/logo.png" width="40" height="40" alt="">
+        </a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar_id"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbar_id">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="/" class="nav-link">HOME</a></li>
+                <li class="nav-item"><a href="/add-user" class="nav-link active">ADD PILOT</a></li>
+                <li class="nav-item"><a href="" class="nav-link">EDIT PILOT</a></li>
+                <li class="nav-item"><a href="" class="nav-link">NOTIFICATIONS</a></li>
+                
+        </ul>
+        </collapse>
+    </nav><!-- class="navbar" -->
+</div>
 <!-- Main Site -->
 <main id="site-main">
     <div class="container">
         <div class="box-nav d-flex justify-between">
             <div class="filter">
-                <a href="/"><i class="fas fa-angle-double-left"></i> All Users</a>
+                <a href="/"><i class="fas fa-angle-double-left"></i>Back To HOME Page</a>
             </div>
         </div>
         <div class="form-title text-center">
-            <h2 class="text-dark">New User</h2>
-            <span class="text-light">Use the below form to create a new account</span>
+            <h2 class="text-dark">New Pilot</h2>
         </div>
         <!-- form handeling -->
         <%-include('include/_form') %>

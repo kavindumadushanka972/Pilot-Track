@@ -1,81 +1,57 @@
 <!-- include header -->
     <%-include('include/_header') %>
 <!-- /include header -->
-
-<!-- Main Site -->
-<main id="site-main">
-    <div class="container">
-        <div class="box-nav d-flex">
-            <a href="/add-user" class="border-shadow">
-                <span class="text-gradient">New User <i class="fas fa-user"></i></span>
+<div class="full">
+    <div>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">
+                <img src="/img/logo.png" width="40" height="40" alt="">
             </a>
-
-            <a href="/sort-attendance" class="border-shadow sort" >
-                <span class="text-gradient">Attendance <i class="fas fa-fingerprint"></i></span>
-            </a>
-        
-            <a href="/" class="border-shadow sort" >
-                <span class="text-gradient">Distance <i class="fas fa-tachometer-alt"></i></span>
-            </a>
-            
-            <a href="/sort-turns" class="border-shadow sort" >
-                <span class="text-gradient" id="turns_sort">Turns <i class="fas fa-truck-moving"></i></span>
-            </a>
-            <a href="/sort-accidents" class="border-shadow sort">
-                <span class="text-gradient">Accidents <i class="fas fa-car-crash"></i></span>
-            </a>
-            <a href="/sort-repairs" class="border-shadow sort" >
-                <span class="text-gradient">Repairs <i class="fas fa-tools"></i></span>
-            </a>
-            <a href="/sort-complains" class="border-shadow sort" >
-                <span class="text-gradient">Complains <i class="fas fa-phone-square-alt"></i></span>
-            </a>
-            <a href="/sort-disciplinary_actions" class="border-shadow sort" >
-                <span class="text-gradient">Dis. Actions <i class="fas fa-exclamation-circle"></i></i></span>
-            </a>
-            <a href="/sort-avgspeed" class="border-shadow sort" >
-                <span class="text-gradient">Speed <i class="fas fa-shipping-fast"></i></span>
-            </a>
-            <a href="/sort-fuel" class="border-shadow sort" >
-                <span class="text-gradient">Fuel <i class="fas fa-gas-pump"></i></span>
-            </a>
-            <a class="border-shadow-reset">
-                <span class="text-gradient" id="resetbtn">Reset <i class="fas fa-power-off"></i></span>
-            </a>
-        </div>
-        <!-- form handeling -->
-            <form action="/" method="POST">
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>Place</th>
-                            <th>Name</th>
-                            <th>EmpNum</th>
-                            <th>Attendance</th>
-                            <th>Distance</th>
-                            <th>Turns</th>
-                            <th>Accidents</th>
-                            <th>Running <br>Repairs</th>
-                            <th>Customer <br>Complains</th>
-                            <th>Disciplinary <br>Actions</th>
-                            <th>Average <br>Speed</th>
-                            <th>Fuel <br>Usage</th>
-                            <th>Action</th>
-                            
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- include table -->
-                            <%-include('include/_show') %>
-                        <!-- /include table -->
-                    </tbody>
-                </table>
-            </form>
-        <!-- /form handeling -->
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar_id"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbar_id">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="/" class="nav-link active">HOME</a></li>
+                    <li class="nav-item"><a href="/add-user" class="nav-link">ADD PILOT</a></li>
+                    <li class="nav-item"><a href="" class="nav-link">EDIT PILOT</a></li>
+                    <li class="nav-item"><a href="" class="nav-link">NOTIFICATIONS</a></li>
+                    
+            </ul>
+            </collapse>
+        </nav><!-- class="navbar" -->
     </div>
-</main>
-<!-- /Main Site -->
+    
+    
+    
+    <div class="mt-5 container">
+        <form action="/update-user" method="get" accept-charset="utf-8">
+            <div class="form-group">
+                <label for="ServiceNumber" style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size:large">Service Number</label><br>
+                <input class="col-md-8" type="text" name="ServiceNumber" class="form-control" id="ServiceNumber"  style="font-size:large" placeholder="Enter Service Number">
+            </div><!-- class="form-group" -->
+            <br><br>
+    
+            <div class="container form-row">
+                    <div class="container form-group col-md-8">
+                        <label class="col-md-8" for="AirCraftType" style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size:large">Air Craft Type</label>
+                        <select class="form-control" id="aircraft_type" name="aircraft_type">
+                            <option selected>Choose..</option>
+                            <option>Bell 212</option>
+                            <option>Bell 412</option>
+                            <option>MI-17</option>
+                        </select>
+                    </div> 
+            </div>
+            <button type="submit" class="btn btn-success btn-md">Search</button>
+        </form>
+        <br><br>
+        <a href='/add-user' id="add_new" class="btn btn-primary col-md-4" type="submit">ADD A NEW PROFILE</a>
+        <button type="" class="btn btn-primary col-md-4">NOTIFICATIONS <span class="badge badge-danger">09</span></button>
+        
+    </div>
+</div>
+
+
 
 <!-- include footer -->
-<%-include('include/_footer') %>
+    <%-include('include/_footer') %>
 <!-- /include footer -->
