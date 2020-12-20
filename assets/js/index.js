@@ -19,7 +19,7 @@ $(document).ready(function(){
         console.log(data);
 
         var request = {
-            "url":`/api/users/${data.service_number}`,
+            "url":`/api/users/${data.findFactor}`,
             //"url": window.location.protocol + window.location.host + `/api/users/${data.id}`,
             "method": "PUT",
             "data": data

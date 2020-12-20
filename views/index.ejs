@@ -13,7 +13,7 @@
                     <li class="nav-item"><a href="/" class="nav-link active">HOME</a></li>
                     <li class="nav-item"><a href="/add-user" class="nav-link">ADD PILOT</a></li>
                     <li class="nav-item"><a href="" class="nav-link">EDIT PILOT</a></li>
-                    <li class="nav-item"><a href="" class="nav-link">NOTIFICATIONS</a></li>
+                    <li class="nav-item"><a href="/notifications" class="nav-link">NOTIFICATIONS</a></li>
                     
             </ul>
             </collapse>
@@ -35,8 +35,8 @@
                         <label class="col-md-8" for="AirCraftType" style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size:large">Air Craft Type</label>
                         <select class="form-control" id="aircraft_type" name="aircraft_type">
                             <option selected>Choose..</option>
-                            <option>Bell 212</option>
-                            <option>Bell 412</option>
+                            <option>Bell-212</option>
+                            <option>Bell-412</option>
                             <option>MI-17</option>
                         </select>
                     </div> 
@@ -45,7 +45,7 @@
         </form>
         <br><br>
         <a href='/add-user' id="add_new" class="btn btn-primary col-md-4" type="submit">ADD A NEW PROFILE</a>
-        <button type="" class="btn btn-primary col-md-4">NOTIFICATIONS <span class="badge badge-danger">09</span></button>
+        <a href='/notifications' class="btn btn-primary col-md-4" id="noti_button">NOTIFICATIONS <span class="badge badge-danger"><%= count %></span></a>
         
     </div>
 </div>

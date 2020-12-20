@@ -34,7 +34,10 @@ var scheme = new mongoose.Schema({
     renewed_rating_type: String,
     validity_of_rating: String,
     number_of_cards: String,
-    date: String
+    date: String,
+    expiredate: String,
+    finalday: String,
+    findFactor: String
 });
 
 const Userdb = mongoose.model('userdb', scheme);

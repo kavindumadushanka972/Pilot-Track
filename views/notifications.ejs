@@ -1,0 +1,42 @@
+<!-- include header -->
+<%-include('include/_header') %>
+<!-- /include header -->
+<div class="full">
+    <div>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">
+                <img src="/img/logo.png" width="40" height="40" alt="">
+            </a>
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar_id"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbar_id">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="/" class="nav-link">HOME</a></li>
+                    <li class="nav-item"><a href="/add-user" class="nav-link">ADD PILOT</a></li>
+                    <li class="nav-item"><a href="" class="nav-link">EDIT PILOT</a></li>
+                    <li class="nav-item"><a href="/notifications" class="nav-link active">NOTIFICATIONS</a></li>
+                    
+            </ul>
+            </collapse>
+        </nav><!-- class="navbar" -->
+    </div>
+
+</div>
+
+<div class="card bg-warning container mt-5" >
+    <div class="card-header">
+        <h5>WARNING <i class="fas fa-exclamation-triangle"></i></h5>
+    </div><!-- class="card-header" -->
+    <div class="card-body">
+        <% for(var i =0; i < users.length; i++){ %>
+            <p class="card-text" style="text-align:left"><i class="fas fa-fighter-jet"></i> <%= users[i].service_number %> <%= users[i].rank %> <%= users[i].name_init %> will expire his <%= users[i].aircraft_type %> instrument ratings on <%= users[i].expire %></p>
+        <% } %>
+        </p>
+    </div><!-- class="card-body" -->
+    <div class="card-footer">
+        <p><p class="mb-0">Click <a href="/" class="text-danger"><i class="far fa-hand-point-right"></i> here</a> to go back.. </p></p>
+    </div><!-- class="card-footer" -->
+</div><!-- class="card" -->
+
+<!-- include footer -->
+<%-include('include/_footer') %>
+<!-- /include footer -->

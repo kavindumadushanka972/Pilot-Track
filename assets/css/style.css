@@ -28,6 +28,10 @@ a{
     text-align: left;
 }
 
+.notification-area{
+    padding-top: 50px;
+}
+
 .container{ 
     margin-top:auto;
     margin-bottom:auto;

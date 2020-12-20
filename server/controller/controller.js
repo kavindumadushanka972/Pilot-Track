@@ -1,5 +1,6 @@
 var Userdb = require('../model/model');
 
+
 // create & save new user
 exports.create = (req,res) =>{
     //validate request
@@ -7,6 +8,13 @@ exports.create = (req,res) =>{
         res.status(400).send({message: "Content can not be empty"});
         return; //exit
     }
+
+    var addingDate = new Date(req.body.date);
+    var finalDate = new Date(req.body.date)
+    var numberofdays_to_remind = 351;
+    var numberofdays_to_expire = 365;
+    addingDate.setDate(addingDate.getDate() + numberofdays_to_remind);
+    finalDate.setDate(finalDate.getDate()+ numberofdays_to_expire);
 
     //new user
     const user = new Userdb({
@@ -43,7 +51,10 @@ exports.create = (req,res) =>{
         renewed_rating_type: req.body.renewed_rating_type,
         validity_of_rating: req.body.validity_of_rating,
         number_of_cards: req.body.number_of_cards,
-        date: req.body.date
+        date: req.body.date,
+        expiredate: addingDate,
+        finalday: finalDate,
+        findFactor: req.body.service_number + req.body.aircraft_type
     });
 
     // save user in the database
@@ -61,30 +72,30 @@ exports.create = (req,res) =>{
 }
 
 // retrive & return all users/ retrive & return a single user
-exports.find = (req, res) =>{
-    if(req.query.id){
-        const id = req.query.id;
-        Userdb.findById(id)
-            .then(data =>{
-                if(!data){
-                    res.status(404).send({message: "Not found user with id " + id})
-                }else{
-                    res.send(data)
-                }
-            })
-            .catch(err =>{
-                res.status(500).send({message: "Error retrieving user with id " + id})
-            })
-    }else{
-        Userdb.find()
-            .then(user =>{
-                res.send(user)
-            })
-            .catch(err =>{
-                res.status(500).send({message: err.message || "Error Occured while retirive user info"})
-            })
-    }  
-}
+// exports.find = (req, res) =>{
+//     if(req.query.id){
+//         const id = req.query.id;
+//         Userdb.findById(id)
+//             .then(data =>{
+//                 if(!data){
+//                     res.status(404).send({message: "Not found user with id " + id})
+//                 }else{
+//                     res.send(data)
+//                 }
+//             })
+//             .catch(err =>{
+//                 res.status(500).send({message: "Error retrieving user with id " + id})
+//             })
+//     }else{
+//         Userdb.find()
+//             .then(user =>{
+//                 res.send(user)
+//             })
+//             .catch(err =>{
+//                 res.status(500).send({message: err.message || "Error Occured while retirive user info"})
+//             })
+//     }  
+// }
 
 //update a new identified user by userID
 exports.update = (req, res) =>{
@@ -94,68 +105,76 @@ exports.update = (req, res) =>{
             .send({message: "Data to update can not be empty"})
     }
     
-        const service_number = req.params.service_number; //getting url parameter
+    const findFactor = req.params.findFactor; //getting url parameter
+    // console.log("*******" + findFactor);
+    var addingDate = new Date(req.body.date);
+    var finalDate = new Date(req.body.date);
+    var numberofdays_to_remind = 351;
+    var numberofdays_to_expire = 365;
+    addingDate.setDate(addingDate.getDate() + numberofdays_to_remind);
+    finalDate.setDate(finalDate.getDate()+ numberofdays_to_expire);
+    req.body.expiredate = addingDate;
+    req.body.finalday = finalDate;
 
-        
-        Userdb.findOneAndUpdate(service_number, req.body, {useFindAndModify: false})
-            .then(data =>{
-                if(!data){
-                    res.status(404).send({message: `Cannot update user with $(id). Maybe user not found`})
-                }else{
-                    res.send(data);
-                }
-            })
-            .catch(err =>{
-                res.status(500).send({message: `Error update user information`})
-            })
+    Userdb.findOneAndUpdate({'findFactor': findFactor}, req.body, {useFindAndModify: false})
+        .then(data =>{
+            if(!data){
+                res.status(404).send({message: `Cannot update user with $(id). Maybe user not found`})
+            }else{
+                res.send(data);
+            }
+        })
+        .catch(err =>{
+            res.status(500).send({message: `Error update user information`})
+        })
 
 }
 
 // delete a user with specified user id in the request
-exports.delete = (req, res) =>{
-    const id = req.params.id;
-    Userdb.findByIdAndDelete(id)
-        .then(data =>{
-            if(!data){
-                res.status(404).send({message: `Cannot delete with id $(id). Maybe id is wrong`})
-            }else{
-                res.send({
-                    message: "User was deleted successfully"
-                })
-            }
-        })
-        .catch(err =>{
-            res.status(500).send({
-                message: "Could not delete User with id = " + id
-            });
-        });
-}
+// exports.delete = (req, res) =>{
+//     const id = req.params.id;
+//     Userdb.findByIdAndDelete(id)
+//         .then(data =>{
+//             if(!data){
+//                 res.status(404).send({message: `Cannot delete with id $(id). Maybe id is wrong`})
+//             }else{
+//                 res.send({
+//                     message: "User was deleted successfully"
+//                 })
+//             }
+//         })
+//         .catch(err =>{
+//             res.status(500).send({
+//                 message: "Could not delete User with id = " + id
+//             });
+//         });
+// }
 
-exports.form_reset = (req,res) =>{
+// exports.form_reset = (req,res) =>{
      
-        Userdb.updateMany(
-            {},
-            {
-                $set:{
-                    'att':'0',
-                    'distance': '0',
-                    'turns':'0',
-                    'accidents':'0',
-                    'running_repair':'0',
-                    'customer_complains':'0',
-                    'disciplinary_actions':'0',
-                    'fuel':'0',
-                    'avgspeed':'0',
-                    'avgspeed_show':'_'
+//         Userdb.updateMany(
+//             {},
+//             {
+//                 $set:{
+//                     'att':'0',
+//                     'distance': '0',
+//                     'turns':'0',
+//                     'accidents':'0',
+//                     'running_repair':'0',
+//                     'customer_complains':'0',
+//                     'disciplinary_actions':'0',
+//                     'fuel':'0',
+//                     'avgspeed':'0',
+//                     'avgspeed_show':'_'
 
-                }
-            }
-        ).exec(function(err,docs){
-            if (err) throw err;
-            console.log(docs);
-            res.render("index",{users:docs});
-            // res.send({
-            //     message: "Successfully Reset"
-            // })
-        });
-}
+//                 }
+//             }
+//         ).exec(function(err,docs){
+//             if (err) throw err;
+//             console.log(docs);
+//             res.render("index",{users:docs});
+//             // res.send({
+//             //     message: "Successfully Reset"
+//             // })
+//         });
+// }
