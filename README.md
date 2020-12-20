@@ -1,6 +1,6 @@
-# Driver-Details
+# Pilot-Details
 
-## A web app to monitor drivers and rank them according to some criterias,made for DSI
+## A web app to manage instrumental licenses of Pilots in Air Force
 
 ### Before RUN:
 #### Provide username & password of the database in the config.env file before you run the application
