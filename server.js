@@ -7,8 +7,8 @@ const connectDB = require('./server/database/connection'); //to connect to the m
 const app = express();
 var favicon = require('serve-favicon');
 
-dotenv.config({path: 'config.env'}); //path to config file
 
+dotenv.config({path: 'config.env'}); //path to config file
 
 //print log requests
 app.use(morgan('tiny'));
@@ -28,9 +28,7 @@ app.use(favicon(__dirname + '/favicon.ico'));
 app.use('/css', express.static(path.resolve(__dirname, "assets/css")));
 app.use('/img', express.static(path.resolve(__dirname, "assets/img")));
 app.use('/js', express.static(path.resolve(__dirname, "assets/js")));
-app.use('/upload', express.static(path.resolve(__dirname, "public/uploads")));
-
-
+app.use('/uploads', express.static(path.resolve(__dirname, "public/uploads")));
 //load routers
 app.use('/',require('./server/routes/router'));
 

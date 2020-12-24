@@ -37,7 +37,9 @@ var scheme = new mongoose.Schema({
     date: String,
     expiredate: String,
     finalday: String,
-    findFactor: String
+    findFactor: String,
+    avatar1: String,
+    avatar2: String
 });
 
 const Userdb = mongoose.model('userdb', scheme);

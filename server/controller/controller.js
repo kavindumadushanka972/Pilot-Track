@@ -8,13 +8,15 @@ exports.create = (req,res) =>{
         res.status(400).send({message: "Content can not be empty"});
         return; //exit
     }
-
+    console.log(req.files);
+    console.log(req.body);
     var addingDate = new Date(req.body.date);
     var finalDate = new Date(req.body.date)
     var numberofdays_to_remind = 351;
     var numberofdays_to_expire = 365;
     addingDate.setDate(addingDate.getDate() + numberofdays_to_remind);
     finalDate.setDate(finalDate.getDate()+ numberofdays_to_expire);
+
 
     //new user
     const user = new Userdb({
@@ -55,8 +57,22 @@ exports.create = (req,res) =>{
         expiredate: addingDate,
         finalday: finalDate,
         findFactor: req.body.service_number + req.body.aircraft_type
-    });
-
+    })
+    // if(req.file){
+    //     user.avatar = req.file.filename
+    // }
+    if(req.files){
+        
+        var photoarray = []
+        req.files.forEach(function(files, index, arr){
+            var name =  files.filename;
+            console.log(name);
+            photoarray.push(name);
+        })
+        
+        user.avatar1 = photoarray[0];
+        user.avatar2 = photoarray[1];
+    }
     // save user in the database
     user
         .save(user)

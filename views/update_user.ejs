@@ -479,6 +479,27 @@
                         <input type="date" name="date" class="form-control" id="date" area-describedby="" placeholder="date" value="<%= users[0].date %>">
                     </div> 
                 </div>
+
+                <div class="card-group">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text"><%= users[0].avatar1 %></p>
+                        </div><!-- class="card-body" -->
+                        <img src='/uploads/<%= users[0].avatar1 %>' alt="Photo1" class="card-img-top">
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated on <%= users[0].date %></small>
+                        </div><!-- class="card-footer" -->
+                    </div><!-- class="card" -->
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text"><%= users[0].avatar2 %></p>
+                        </div><!-- class="card-body" -->
+                        <img src='/uploads/<%= users[0].avatar2 %>' alt="Photo2" class="card-img-top">
+                        <div class="card-footer">
+                            <small class="text-muted">Last updated on <%= users[0].date %></small>
+                        </div><!-- class="card-footer" -->
+                    </div><!-- class="card" -->
+                </div>
                 <br>
 		        <button type="submit" class="btn btn-danger">Submit</button>
             </div>

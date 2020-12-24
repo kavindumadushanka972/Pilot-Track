@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
 
     $('#add_user').submit(function(event){
@@ -8,7 +7,7 @@ $(document).ready(function(){
     //method to update user data in the database
     $('#update_user').submit(function(event){
         event.preventDefault(); //change the default behaviour
-        console.log("hi");
+        // console.log("hi");
         var unindexed_array = $(this).serializeArray(); //get all the data in the form to an array
         var data = {}
 

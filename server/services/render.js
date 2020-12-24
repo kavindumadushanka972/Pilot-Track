@@ -6,7 +6,7 @@ var Userdb = require('../model/model');
 exports.homeRoutes = (req, res) => {
     Userdb.find({},{"expiredate":1}).exec(function(err,docs){
         if (err) throw err;
-        // console.log(docs);
+        
         // console.log(docs.length);
         var i;
         var count = 0;
@@ -19,13 +19,27 @@ exports.homeRoutes = (req, res) => {
         }
         // console.log(count);
         res.render('index',{count});
-        // console.log(count);
+        //console.log(JSON.parse(JSON.stringify(docs)));
     });
-    
+
 }
 
 exports.add_user = (req,res) =>{
     res.render('add_user'); 
+}
+
+exports.update_user_card = (req, res) =>{
+    const CardNumber = req.query.card_number;
+    Userdb.find({"card_number": CardNumber}).exec(function(err,docs){
+        if (err) throw err;
+        if(docs[0] == null){
+            res.render("notmatching");
+        }else{
+            // console.log(docs);
+            res.render("update_user",{users:docs});
+        }
+        
+      });
 }
 
 exports.update_user = (req,res) =>{
@@ -64,7 +78,7 @@ exports.notifications = (req,res) =>{
         // console.log(users);
         res.render('notifications', {users:users});
         
-        
+    
     });
      
 }

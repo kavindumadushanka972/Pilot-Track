@@ -11,6 +11,10 @@
     overflow: auto;
 }
 
+hr{
+    background-color: #2b2d42;
+}
+
 *{
     padding: 0;
     margin: 0;

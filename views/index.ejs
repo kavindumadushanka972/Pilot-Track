@@ -28,8 +28,7 @@
                 <label for="ServiceNumber" style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size:large">Service Number</label><br>
                 <input class="col-md-8" type="text" name="ServiceNumber" class="form-control" id="ServiceNumber"  style="font-size:large" placeholder="Enter Service Number">
             </div><!-- class="form-group" -->
-            <br><br>
-    
+            <br>
             <div class="container form-row">
                     <div class="container form-group col-md-8">
                         <label class="col-md-8" for="AirCraftType" style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size:large">Air Craft Type</label>
@@ -42,16 +41,21 @@
                     </div> 
             </div>
             <button type="submit" class="btn btn-success btn-md">Search</button>
-        </form>
+        </form><hr>
+        <form action="/update-user-card" method="get" accept-charset="utf-8">
+            <div class="form-group">
+                <label for="card_number" style="font-family: Verdana, Geneva, Tahoma, sans-serif; font-size:large">Card Number</label><br>
+                <input class="col-md-8" type="text" name="card_number" class="form-control" id="card_number"  style="font-size:large" placeholder="Enter Card Number Here">
+            </div><!-- class="form-group" -->
+            <button type="submit" class="btn btn-success btn-md">Search</button>
         <br><br>
+
         <a href='/add-user' id="add_new" class="btn btn-primary col-md-4" type="submit">ADD A NEW PROFILE</a>
         <a href='/notifications' class="btn btn-primary col-md-4" id="noti_button">NOTIFICATIONS <span class="badge badge-danger"><%= count %></span></a>
         
     </div>
 </div>
-
-
-
+    
 <!-- include footer -->
     <%-include('include/_footer') %>
 <!-- /include footer -->
