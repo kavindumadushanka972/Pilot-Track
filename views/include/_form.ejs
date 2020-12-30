@@ -17,7 +17,7 @@
             </div>
 
             <div class="form-group col-md-6">
-                <select class="form-control" id="rank" name="rank">
+                <select class="form-control" id="rank" name="rank" required>
                     <option selected>Choose..</option>
                     <option>Pilot Officer (Plt Off)</option>
                     <option>Flying Officer (Fg Off)</option>
@@ -321,7 +321,7 @@
             </div>
         </div><!-- class="form-row" -->
         
-        <div class="form-row">
+        <!-- <div class="form-row">
             <div class="form-group col-md-4">
                 <p for="instrument_ratings" style="font-size: large; text-align:left">6.Current Instrument Rating</p>
             </div>
@@ -334,11 +334,11 @@
                     <option>Master Green</option>
                 </select>
             </div> 
-        </div>
+        </div> -->
 
         <div class="form-row">
             <div class="form-group col-md-4">
-                <p for="card_number" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left">6.1 Card Number</p>
+                <p for="card_number" style="font-size: large; text-align:left; margin-top: 12px">6. Card Number</p>
             </div>
 
             <div class="form-group col-md-6">
@@ -358,7 +358,7 @@
             </div>
 
             <div class="form-group col-md-6">
-                <select class="form-control" id="verification_rank" name="verification_rank">
+                <select class="form-control" id="verification_rank" name="verification_rank" required>
                     <option selected>Choose..</option>
                     <option>Pilot Officer (Plt Off)</option>
                     <option>Flying Officer (Fg Off)</option>
@@ -402,26 +402,27 @@
 
         <div class="form-row">
             <div class="form-group col-md-4">
-                <p for="renewed_rating_type" style="font-size: large; margin-left: 50px; margin-top: 12px; text-align:left">8.1 Type of Rating</p>
+                <p for="renewed_rating_type" style="font-size: large; margin-left: 50px; text-align:left">8.1 Type of Rating</p>
             </div>
 
             <div class="form-group col-md-6">
-                <input type="text" name="renewed_rating_type" class="form-control" id="renewed_rating_type" area-describedby="" placeholder="Type of Rating" required="true">
-            </div> 
-        </div>
-
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <p for="validity_of_rating" style="font-size: large; margin-left: 50px; text-align:left">8.2 Validity of Rating</p>
-            </div>
-
-            <div class="form-group col-md-6">
-                <select class="form-control" id="validity_of_rating" name="validity_of_rating">
+                <select class="form-control" id="renewed_rating_type" name="renewed_rating_type" required>
                     <option selected>Choose..</option>
                     <option>White</option>
                     <option>Green</option>
                     <option>Master Green</option>
                 </select>
+            </div> 
+ 
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <p for="validity_of_rating" style="font-size: large; margin-left: 50px;margin-top: 12px; text-align:left">8.2 Validity of Rating</p>
+            </div>
+
+            <div class="form-group col-md-6">
+                <input type="text" name="validity_of_rating" class="form-control" id="validity_of_rating" area-describedby="" placeholder="Type of Rating" required="true">
             </div> 
         </div>
         

@@ -45,7 +45,7 @@ exports.create = (req,res) =>{
         first_pilot_total_mins: req.body.first_pilot_total_mins,
         first_pilot_total_6_hrs: req.body.first_pilot_total_6_hrs,
         first_pilot_total_6_mins: req.body.first_pilot_total_6_mins,
-        instrument_ratings: req.body.instrument_ratings,
+        instrument_ratings: req.body.renewed_rating_type,
         card_number: req.body.card_number,
         verification_rank: req.body.verification_rank,
         verification_name: req.body.verification_name,
@@ -132,6 +132,11 @@ exports.update = (req, res) =>{
     req.body.expiredate = addingDate;
     req.body.finalday = finalDate;
 
+    if (req.body.renewed_rating_type != "Choose.."){
+        req.body.instrument_ratings = req.body.renewed_rating_type;
+        
+    }
+
     Userdb.findOneAndUpdate({'findFactor': findFactor}, req.body, {useFindAndModify: false})
         .then(data =>{
             if(!data){
@@ -142,29 +147,31 @@ exports.update = (req, res) =>{
         })
         .catch(err =>{
             res.status(500).send({message: `Error update user information`})
-        })
+        })  
+
+    
 
 }
 
-// delete a user with specified user id in the request
-// exports.delete = (req, res) =>{
-//     const id = req.params.id;
-//     Userdb.findByIdAndDelete(id)
-//         .then(data =>{
-//             if(!data){
-//                 res.status(404).send({message: `Cannot delete with id $(id). Maybe id is wrong`})
-//             }else{
-//                 res.send({
-//                     message: "User was deleted successfully"
-//                 })
-//             }
-//         })
-//         .catch(err =>{
-//             res.status(500).send({
-//                 message: "Could not delete User with id = " + id
-//             });
-//         });
-// }
+//delete a user with specified user id in the request
+exports.delete = (req, res) =>{
+    const findFactor = req.params.findFactor;
+    Userdb.deleteOne({'findFactor':findFactor})
+        .then(data =>{
+            if(!data){
+                res.status(404).send({message: `Cannot delete with id $(id). Maybe id is wrong`})
+            }else{
+                res.send({
+                    message: "User was deleted successfully"
+                })
+            }
+        })
+        .catch(err =>{
+            res.status(500).send({
+                message: "Could not delete User with id = " + id
+            });
+        });
+}
 
 // exports.form_reset = (req,res) =>{
      

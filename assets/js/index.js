@@ -52,6 +52,23 @@ $(document).ready(function(){
         // });
 
     }) 
+
+    $("#delete").click(function(){
+        var findFactor = document.getElementById('findFactor').value;
+
+        var request = {
+            "url":`/api/users/${findFactor}`,
+            //"url": window.location.protocol + window.location.host + `/api/users/${data.id}`,
+            "method": "DELETE"
+        }
+
+        if(confirm("Are you sure?")){
+            $.ajax(request).done(function(response){
+                alert("Data deleted successfully");
+                location.reload()
+            })
+        }
+    })
     
 
 

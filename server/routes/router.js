@@ -36,7 +36,7 @@ route.get('/update-user-card', services.update_user_card);
 route.post('/api/users', upload.array('avatar[]'), controller.create); //POST is used to send data to a server to create/update a resource.
 // route.get('/api/users', controller.find); //GET is used to request data from a specified resource.
 route.put('/api/users/:findFactor', controller.update); //PUT is used to send data to a server to create/update a resource.
-// route.delete('/api/users/:id', controller.delete); //The DELETE method deletes the specified resource.
+route.delete('/api/users/:findFactor', controller.delete); //The DELETE method deletes the specified resource.
 // route.get('/api/users/reset', controller.form_reset);
 
 module.exports = route;
