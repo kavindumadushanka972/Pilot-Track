@@ -3,30 +3,35 @@ $(document).ready(function(){
     $('#add_user').submit(function(event){
         alert("Data inserted successfully");
     });
+
+    $('#update_user').submit(function(event){
+        alert("Data uploaded successully");
+        location.reload();
+    }
     
     //method to update user data in the database
-    $('#update_user').submit(function(event){
-        event.preventDefault(); //change the default behaviour
-        // console.log("hi");
-        var unindexed_array = $(this).serializeArray(); //get all the data in the form to an array
-        var data = {}
+    // $('#update_user').submit(function(event){
+    //     event.preventDefault(); //change the default behaviour
+    //     // console.log("hi");
+    //     var unindexed_array = $(this).serializeArray(); //get all the data in the form to an array
+    //     var data = {}
 
-        $.map(unindexed_array, function(n, i){
-            data[n['name']] = n['value']
-        })
+    //     $.map(unindexed_array, function(n, i){
+    //         data[n['name']] = n['value']
+    //     })
         
-        console.log(data);
+    //     console.log(data);
 
-        var request = {
-            "url":`/api/users/${data.findFactor}`,
-            //"url": window.location.protocol + window.location.host + `/api/users/${data.id}`,
-            "method": "PUT",
-            "data": data
-        }
-        console.log(request);
-        $.ajax(request).done(function(response){
-            alert("Data updated successfully");
-        })
+    //     var request = {
+    //         "url":`/api/users/${data.findFactor}`,
+    //         //"url": window.location.protocol + window.location.host + `/api/users/${data.id}`,
+    //         "method": "PUT",
+    //         "data": data
+    //     }
+    //     console.log(request);
+    //     $.ajax(request).done(function(response){
+    //         alert("Data updated successfully");
+    //     })
 
         // function foo() {
         //     var httpRequest = new XMLHttpRequest();
@@ -51,7 +56,7 @@ $(document).ready(function(){
         //     }
         // });
 
-    }) 
+    // }) 
 
     $("#delete").click(function(){
         var findFactor = document.getElementById('findFactor').value;

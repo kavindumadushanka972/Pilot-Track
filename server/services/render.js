@@ -28,6 +28,10 @@ exports.add_user = (req,res) =>{
     res.render('add_user'); 
 }
 
+exports.updated = (req, res) =>{
+    res.render('updated');
+}
+
 exports.update_user_card = (req, res) =>{
     const CardNumber = req.query.card_number;
     Userdb.find({"card_number": CardNumber}).exec(function(err,docs){

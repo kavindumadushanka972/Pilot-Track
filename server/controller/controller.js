@@ -137,12 +137,30 @@ exports.update = (req, res) =>{
         
     }
 
+    if(req.files){
+        
+        var photoarray = []
+        req.files.forEach(function(files, index, arr){
+            var name =  files.filename;
+            console.log(name);
+            photoarray.push(name);
+        });
+        if(photoarray[0] != null){
+            req.body.avatar1 = photoarray[0];
+        }
+        if(photoarray[1] != null){
+            req.body.avatar2 = photoarray[1];
+        }
+        
+    }
+
     Userdb.findOneAndUpdate({'findFactor': findFactor}, req.body, {useFindAndModify: false})
         .then(data =>{
             if(!data){
                 res.status(404).send({message: `Cannot update user with $(id). Maybe user not found`})
             }else{
-                res.send(data);
+                res.redirect('/updated');
+                // res.send(data);
             }
         })
         .catch(err =>{
