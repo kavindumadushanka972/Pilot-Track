@@ -10,8 +10,8 @@
 ## RUN:
 
 ***************************************************
-nmp install
-npx nodemon server.js
+### nmp install
+### npx nodemon server.js
 ***************************************************
 ## Interfaces
 <img src ="https://github.com/kavindumadushanka972/Pilot-Track/blob/main/1620018453714.jpg">
