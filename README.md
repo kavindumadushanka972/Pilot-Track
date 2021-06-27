@@ -2,6 +2,8 @@
 
 ## A web app to manage instrumental licenses of Pilots in Air Force
 
+## Author: Kavindu Madushanka
+
 ## Before RUN:
 #### Provide username & password of the database in the config.env file before you run the application
 
